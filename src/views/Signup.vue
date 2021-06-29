@@ -13,7 +13,7 @@
       </div>
       <div class="form-group">
         <label>Username:</label>
-        <input type="text" class="form-control" v-model="newUserParams.username" />
+        <input type="text" class="form-control" v-model="newUserParams.user_name" />
       </div>
       <div class="form-group">
         <label>Email:</label>
