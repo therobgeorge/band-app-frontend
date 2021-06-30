@@ -12,11 +12,13 @@
         <tr>
           <td>
             <img :src="tour.user.profile_picture" alt="" />
-            {{ tour.user.name }}
+            <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
           </td>
           <td>{{ tour.date }}</td>
           <td>{{ tour.location }}</td>
           <td>{{ tour.comment }}</td>
+          <!-- need to add link once conversation and message pages are complete -->
+          <td><button>Message</button></td>
         </tr>
       </table>
     </div>
