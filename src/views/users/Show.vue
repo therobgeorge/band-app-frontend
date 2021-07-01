@@ -5,15 +5,15 @@
     <p>{{ user.bio }}</p>
 
     <span v-if="user.band == false">
-      Accomodation:
-      <p>{{ user.accomodation_description }}</p>
+      Accommodation:
+      <p>{{ user.accommodation_description }}</p>
       <div v-for="(image, index) in user.images" v-bind:key="image.id">
         <img :src="user.images[index].url" alt="" />
       </div>
     </span>
     <span v-if="user.band == true">
       Tours:
-      <div v-for="(tour, index) in user.tours" v-bind:key="tour.id">
+      <div v-for="tour in user.tours" v-bind:key="tour.id">
         <table>
           <tr>
             <th>Date</th>
@@ -21,13 +21,16 @@
             <th>Comment</th>
           </tr>
           <tr>
-            <td>{{ user.tours[index].date }}</td>
-            <td>{{ user.tours[index].location }}</td>
-            <td>{{ user.tours[index].comment }}</td>
+            <td>{{ user.tours.date }}</td>
+            <td>{{ user.tours.location }}</td>
+            <td>{{ user.tours.comment }}</td>
           </tr>
         </table>
       </div>
     </span>
+    <!-- <span v-if="$parent.getUserId() == user.id">
+      <button>Edit</button>
+    </span> -->
     <!-- testing functionality needs to be added to modal -->
     <span>
       <form v-on:submit.prevent="updateUser()">
@@ -62,8 +65,8 @@
           <input type="text" class="form-control" v-model="user.address" />
         </div>
         <div class="form-group">
-          <label>Accomodation:</label>
-          <input type="text" class="form-control" v-model="user.accomodation_description" />
+          <label>Accommodation:</label>
+          <input type="text" class="form-control" v-model="user.accommodation_description" />
         </div>
         <div class="form-group">
           <label>Bio:</label>
