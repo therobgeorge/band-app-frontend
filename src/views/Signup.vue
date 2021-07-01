@@ -32,8 +32,8 @@
         <input type="text" class="form-control" v-model="newUserParams.address" />
       </div>
       <div class="form-group">
-        <label>Accomidation Description:</label>
-        <input type="text" class="form-control" v-model="newUserParams.accomidation_description" />
+        <label>Accomodation Description:</label>
+        <input type="text" class="form-control" v-model="newUserParams.accomodation_description" />
       </div>
       <div class="form-group">
         <label>Band:</label>

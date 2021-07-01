@@ -5,8 +5,8 @@
     <p>{{ user.bio }}</p>
 
     <span v-if="user.band == false">
-      Accomidation:
-      <p>{{ user.accomidation_description }}</p>
+      Accomodation:
+      <p>{{ user.accomodation_description }}</p>
       <div v-for="(image, index) in user.images" v-bind:key="image.id">
         <img :src="user.images[index].url" alt="" />
       </div>
@@ -39,7 +39,7 @@
         </ul>
         <div class="form-group">
           <label>Name:</label>
-          <input type="text" class="form-control" v-model="user.name" />
+          <input type="text" class="form-control" v-model="user.name" placeholder="Name" />
         </div>
         <div class="form-group">
           <label>Profile Picture:</label>
@@ -50,12 +50,20 @@
           <input type="text" class="form-control" v-model="user.email" />
         </div>
         <div class="form-group">
+          <label>Password:</label>
+          <input type="password" class="form-control" v-model="user.password" />
+        </div>
+        <div class="form-group">
+          <label>Password Confirmation:</label>
+          <input type="password" class="form-control" v-model="user.password_confirmation" />
+        </div>
+        <div class="form-group">
           <label>Address:</label>
           <input type="text" class="form-control" v-model="user.address" />
         </div>
         <div class="form-group">
-          <label>Accomidation:</label>
-          <input type="text" class="form-control" v-model="user.accomidation_description" />
+          <label>Accomodation:</label>
+          <input type="text" class="form-control" v-model="user.accomodation_description" />
         </div>
         <div class="form-group">
           <label>Bio:</label>
