@@ -7,6 +7,7 @@ import ToursIndex from "../views/tours/Index.vue";
 import UsersShow from "../views/users/Show.vue";
 import Logout from "../views/Logout.vue";
 import ToursNew from "../views/tours/New.vue";
+import ConversationsIndex from "../views/conversations/Index.vue";
 
 Vue.use(VueRouter);
 
@@ -53,6 +54,11 @@ const routes = [
     path: "/tours/new",
     name: "tours-new",
     component: ToursNew,
+  },
+  {
+    path: "/conversations",
+    name: "conversations-index",
+    component: ConversationsIndex,
   },
 ];
 
