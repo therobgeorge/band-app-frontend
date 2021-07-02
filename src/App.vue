@@ -12,6 +12,8 @@
         |
       </span>
       <span v-if="isLoggedIn()">
+        <router-link to="/conversations">Messages</router-link>
+        |
         <router-link to="/logout">Logout</router-link>
         |
         <span>

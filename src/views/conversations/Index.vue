@@ -1,6 +1,5 @@
 <template>
   <div class="conversations-index">
-    {{ currentUserId }}
     <h1>Messages</h1>
     <!-- add link to conversation show page -->
     <span v-if="currentUser.band == true">
