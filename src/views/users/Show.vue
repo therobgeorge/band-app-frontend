@@ -13,25 +13,27 @@
     </span>
     <span v-if="user.band == true">
       Tours:
-      <div v-for="tour in user.tours" v-bind:key="tour.id">
+      <div>
         <table>
           <tr>
             <th>Date</th>
             <th>Location</th>
             <th>Comment</th>
           </tr>
-          <tr>
-            <td>{{ user.tours.date }}</td>
-            <td>{{ user.tours.location }}</td>
-            <td>{{ user.tours.comment }}</td>
+          <tr v-for="(tour, index) in user.tours" v-bind:key="tour.id">
+            <td>{{ user.tours[index].date }}</td>
+            <td>{{ user.tours[index].location }}</td>
+            <td>{{ user.tours[index].comment }}</td>
           </tr>
         </table>
       </div>
+      <button v-if="$parent.getUserId() == user.id">Add Tour Stop</button>
     </span>
-    <!-- <span v-if="$parent.getUserId() == user.id">
+    <span v-if="$parent.getUserId() == user.id">
       <button>Edit</button>
-    </span> -->
+    </span>
     <!-- testing functionality needs to be added to modal -->
+    <!-- edit user current user will be on buttons -->
     <span>
       <form v-on:submit.prevent="updateUser()">
         <h1>Edit User</h1>
@@ -75,6 +77,31 @@
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
     </span>
+    <!-- Edit tour current user will be on button -->
+    <span>
+      <form v-on:submit.prevent="updateTour()">
+        <h1>Edit Tour</h1>
+        <ul>
+          <li class="text-danger" v-for="error in errors" v-bind:key="error">
+            {{ error }}
+          </li>
+        </ul>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" v-model="tour.date" placeholder="Name" />
+        </div>
+        <div class="form-group">
+          <label>Profile Picture:</label>
+          <input type="text" class="form-control" v-model="tour.location" />
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="text" class="form-control" v-model="tour.comment" />
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit" />
+      </form>
+    </span>
   </div>
 </template>
 
@@ -85,6 +112,7 @@ export default {
     return {
       user: {},
       errors: [],
+      tour: {},
     };
   },
   created: function () {
@@ -99,6 +127,17 @@ export default {
         .patch(`/users/${this.user.id}`, this.user)
         .then((response) => {
           console.log("Edit User Object", response.data);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          console.log(this.errors);
+        });
+    },
+    updateTour: function () {
+      axios
+        .patch(`/tours/${this.tour.id}`, this.tour)
+        .then((response) => {
+          console.log("Edit Tour Object", response.data);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

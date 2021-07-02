@@ -13,6 +13,10 @@
       </span>
       <span v-if="isLoggedIn()">
         <router-link to="/logout">Logout</router-link>
+        |
+        <span>
+          <router-link to="/tours/new">Add Tour Date</router-link>
+        </span>
       </span>
     </div>
     <router-view />
@@ -51,9 +55,9 @@ export default {
     isLoggedIn: function () {
       return localStorage.getItem("jwt");
     },
-    // getUserId: function () {
-    //   return localStorage.getItem(user.id);
-    // },
+    getUserId: function () {
+      return localStorage.getItem("user_id");
+    },
   },
 };
 </script>

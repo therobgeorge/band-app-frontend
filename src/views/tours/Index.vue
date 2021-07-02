@@ -1,7 +1,7 @@
 <template>
   <div class="tours-index">
     <h1>Tours</h1>
-    <div v-for="tour in tours" v-bind:key="tour.id">
+    <div>
       <table>
         <tr>
           <th>Band</th>
@@ -9,7 +9,7 @@
           <th>Location</th>
           <th>Comment</th>
         </tr>
-        <tr>
+        <tr v-for="tour in tours" v-bind:key="tour.id">
           <td>
             <img :src="tour.user.profile_picture" alt="" />
             <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
