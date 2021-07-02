@@ -8,6 +8,7 @@ import UsersShow from "../views/users/Show.vue";
 import Logout from "../views/Logout.vue";
 import ToursNew from "../views/tours/New.vue";
 import ConversationsIndex from "../views/conversations/Index.vue";
+import ConversationsShow from "../views/conversations/Show.vue";
 
 Vue.use(VueRouter);
 
@@ -59,6 +60,11 @@ const routes = [
     path: "/conversations",
     name: "conversations-index",
     component: ConversationsIndex,
+  },
+  {
+    path: "/conversations/:id",
+    name: "conversations-show",
+    component: ConversationsShow,
   },
 ];
 
