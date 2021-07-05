@@ -37,7 +37,7 @@
       </div>
       <div class="form-group">
         <label>Band:</label>
-        <input type="text" class="form-control" v-model="newUserParams.band" />
+        <input type="checkbox" id="band" name="band" value="true" class="form-control" v-model="newUserParams.band" />
       </div>
       <div class="form-group">
         <label>Profile Picture:</label>

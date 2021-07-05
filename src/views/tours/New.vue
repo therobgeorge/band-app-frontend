@@ -9,7 +9,7 @@
       </ul>
       <div class="form-group">
         <label>Date:</label>
-        <input type="text" class="form-control" v-model="newTourParams.date" />
+        <input type="date" class="form-control" v-model="newTourParams.date" />
       </div>
       <div class="form-group">
         <label>Location:</label>
