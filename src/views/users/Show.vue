@@ -10,8 +10,8 @@
       <p>{{ user.accommodation_description }}</p>
       <div v-for="(image, index) in user.images" v-bind:key="image.id">
         <img :src="user.images[index].url" alt="" />
+        <button v-if="$parent.getUserId() == user.id" v-on:click="destroyImage(user.images[index].id)">Delete</button>
       </div>
-      <!-- Needs to trigger add image pop out -->
       <router-link to="/images/new"><button v-if="$parent.getUserId() == user.id">Add Image</button></router-link>
     </span>
     <span v-if="user.band == true">
@@ -151,9 +151,16 @@ export default {
         });
     },
     destroyTour: function (tour_id) {
-      axios.delete(`/tours/${tour_id}`).then((response) => {
-        console.log(response.data);
-      });
+      if (confirm("Confirm Delete Tour Stop"))
+        axios.delete(`/tours/${tour_id}`).then((response) => {
+          console.log(response.data);
+        });
+    },
+    destroyImage: function (image_id) {
+      if (confirm("Confirm Delete Image"))
+        axios.delete(`/images/${image_id}`).then((response) => {
+          console.log(response.data);
+        });
     },
   },
 };

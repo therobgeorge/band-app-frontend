@@ -13,11 +13,16 @@
       </div>
       <div class="form-group">
         <label>Location:</label>
-        <input type="text" class="form-control" v-model="newTourParams.location" />
+        <input type="text" class="form-control" v-model="newTourParams.location" placeholder="City, State" />
       </div>
       <div class="form-group">
         <label>Comment:</label>
-        <input type="text" class="form-control" v-model="newTourParams.comment" />
+        <textarea
+          cols="30"
+          rows="10"
+          v-model="newTourParams.comment"
+          placeholder="Anything your host should know?"
+        ></textarea>
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>

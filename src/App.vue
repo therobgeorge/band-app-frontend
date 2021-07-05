@@ -14,6 +14,8 @@
       <span v-if="isLoggedIn()">
         <router-link to="/conversations">Messages</router-link>
         |
+        <router-link :to="`/users/${currentUserId}`">My Profile</router-link>
+        |
         <router-link to="/logout">Logout</router-link>
       </span>
     </div>
@@ -47,7 +49,12 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      currentUserId: "",
+    };
+  },
+  created: function () {
+    if (localStorage.user_id) this.currentUserId = localStorage.user_id;
   },
   methods: {
     isLoggedIn: function () {

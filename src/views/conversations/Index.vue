@@ -6,7 +6,9 @@
       <div v-for="conversation in conversations" v-bind:key="conversation.id">
         <table>
           <tr><img :src="conversation.host.profile_picture" alt="test" /></tr>
-          <tr>{{ conversation.host.name }}</tr>
+          <router-link :to="`/conversations/${conversation.id}`">
+            <tr>{{ conversation.host.name }}</tr>
+          </router-link>
         </table>
       </div>
     </span>
@@ -15,7 +17,9 @@
       <div v-for="conversation in conversations" v-bind:key="conversation.id">
         <table>
           <tr><img :src="conversation.band.profile_picture" alt="" /></tr>
-          <tr>{{ conversation.band.name }}</tr>
+          <router-link :to="`/conversations/${conversation.id}`">
+            <tr>{{ conversation.band.name }}</tr>
+          </router-link>
         </table>
       </div>
     </span>

@@ -9,31 +9,46 @@
       </ul>
       <div class="form-group">
         <label>Name:</label>
-        <input type="text" class="form-control" v-model="newUserParams.name" />
+        <input type="text" class="form-control" v-model="newUserParams.name" placeholder="Full Name or Band Name" />
       </div>
       <div class="form-group">
         <label>Username:</label>
-        <input type="text" class="form-control" v-model="newUserParams.user_name" />
+        <input type="text" class="form-control" v-model="newUserParams.user_name" placeholder="username" />
       </div>
       <div class="form-group">
         <label>Email:</label>
-        <input type="email" class="form-control" v-model="newUserParams.email" />
+        <input type="email" class="form-control" v-model="newUserParams.email" placeholder="email@email.com" />
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="password" class="form-control" v-model="newUserParams.password" />
+        <input type="password" class="form-control" v-model="newUserParams.password" placeholder="Password" />
       </div>
       <div class="form-group">
         <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="newUserParams.password_confirmation" />
+        <input
+          type="password"
+          class="form-control"
+          v-model="newUserParams.password_confirmation"
+          placeholder="Passoword Confirmation"
+        />
       </div>
       <div class="form-group">
         <label>Address:</label>
-        <input type="text" class="form-control" v-model="newUserParams.address" />
+        <textarea
+          v-model="newUserParams.address"
+          cols="30"
+          rows="10"
+          placeholder="1234 Street, City, State, Post Code"
+        ></textarea>
       </div>
       <div class="form-group">
         <label>Accommodation Description:</label>
-        <input type="text" class="form-control" v-model="newUserParams.accommodation_description" />
+        <textarea
+          v-model="newUserParams.accommodation_description"
+          cols="30"
+          rows="10"
+          placeholder="Accomodation Description"
+        ></textarea>
       </div>
       <div class="form-group">
         <label>Band:</label>
@@ -41,11 +56,11 @@
       </div>
       <div class="form-group">
         <label>Profile Picture:</label>
-        <input type="text" class="form-control" v-model="newUserParams.profile_picture" />
+        <input type="text" class="form-control" v-model="newUserParams.profile_picture" placeholder="Picture URL" />
       </div>
       <div class="form-group">
         <label>Bio:</label>
-        <input type="text" class="form-control" v-model="newUserParams.bio" />
+        <textarea v-model="newUserParams.bio" cols="30" rows="10" placeholder="Tell us about you!"></textarea>
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
