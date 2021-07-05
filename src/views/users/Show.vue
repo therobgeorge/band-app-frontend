@@ -1,6 +1,7 @@
 <template>
   <div class="users-show">
     <h2>{{ user.name }}</h2>
+    <button v-if="$parent.getUserId() == user.id">Edit User</button>
     <img :src="user.profile_picture" alt="" />
     <p>{{ user.bio }}</p>
 
@@ -24,13 +25,14 @@
             <td>{{ user.tours[index].date }}</td>
             <td>{{ user.tours[index].location }}</td>
             <td>{{ user.tours[index].comment }}</td>
+            <td v-if="$parent.getUserId() == user.id"><button>Edit</button></td>
+            <td v-if="$parent.getUserId() == user.id">
+              <button v-on:click="destroyTour(user.tours[index].id)">Delete</button>
+            </td>
           </tr>
         </table>
       </div>
-      <button v-if="$parent.getUserId() == user.id">Add Tour Stop</button>
-    </span>
-    <span v-if="$parent.getUserId() == user.id">
-      <button>Edit</button>
+      <router-link to="/tours/new"><button v-if="$parent.getUserId() == user.id">Add Tour Stop</button></router-link>
     </span>
     <!-- testing functionality needs to be added to modal -->
     <!-- edit user current user will be on buttons -->
@@ -87,15 +89,15 @@
           </li>
         </ul>
         <div class="form-group">
-          <label>Name:</label>
+          <label>Date:</label>
           <input type="text" class="form-control" v-model="tour.date" placeholder="Name" />
         </div>
         <div class="form-group">
-          <label>Profile Picture:</label>
+          <label>Location:</label>
           <input type="text" class="form-control" v-model="tour.location" />
         </div>
         <div class="form-group">
-          <label>Email:</label>
+          <label>Comment:</label>
           <input type="text" class="form-control" v-model="tour.comment" />
         </div>
 
@@ -143,6 +145,11 @@ export default {
           this.errors = error.response.data.errors;
           console.log(this.errors);
         });
+    },
+    destroyTour: function (tour_id) {
+      axios.delete(`/tours/${tour_id}`).then((response) => {
+        console.log(response.data);
+      });
     },
   },
 };

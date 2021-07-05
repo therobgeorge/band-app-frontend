@@ -15,10 +15,6 @@
         <router-link to="/conversations">Messages</router-link>
         |
         <router-link to="/logout">Logout</router-link>
-        |
-        <span>
-          <router-link to="/tours/new">Add Tour Date</router-link>
-        </span>
       </span>
     </div>
     <router-view />

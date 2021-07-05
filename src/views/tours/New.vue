@@ -33,21 +33,35 @@ export default {
     return {
       newTourParams: {},
       errors: [],
+      currentUserId: "",
     };
   },
-  created: function () {},
+  created: function () {
+    if (localStorage.user_id) {
+      this.currentUserId = localStorage.user_id;
+    }
+  },
+  // mounted() {
+  //   this.getCurrentUser();
+  // },
   methods: {
     createTour: function () {
       axios
         .post("/tours", this.newTourParams)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/tours");
+          this.$router.push(`/users/${this.currentUserId}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
     },
+    // getCurrentUser: function () {
+    //   axios.get(`/users/${this.currentUserId}`).then((response) => {
+    //     console.log("Current User", response.data);
+    //     this.currentUser = response.data;
+    //   });
+    // },
   },
 };
 </script>
