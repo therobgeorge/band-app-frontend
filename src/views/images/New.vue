@@ -1,23 +1,15 @@
 <template>
-  <div class="tours-new">
-    <form v-on:submit.prevent="createTour()">
-      <h1>New Tour Date</h1>
+  <div class="images-new">
+    <form v-on:submit.prevent="createImage()">
+      <h1>New Accomodation Image</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
       <div class="form-group">
-        <label>Date:</label>
-        <input type="date" class="form-control" v-model="newTourParams.date" />
-      </div>
-      <div class="form-group">
-        <label>Location:</label>
-        <input type="text" class="form-control" v-model="newTourParams.location" />
-      </div>
-      <div class="form-group">
-        <label>Comment:</label>
-        <input type="text" class="form-control" v-model="newTourParams.comment" />
+        <label>Image URL:</label>
+        <input type="text" class="form-control" v-model="newImageParams.url" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -31,7 +23,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newTourParams: {},
+      newImageParams: {},
       errors: [],
       currentUserId: "",
     };
@@ -42,9 +34,9 @@ export default {
     }
   },
   methods: {
-    createTour: function () {
+    createImage: function () {
       axios
-        .post("/tours", this.newTourParams)
+        .post("/images", this.newImageParams)
         .then((response) => {
           console.log(response.data);
           this.$router.push(`/users/${this.currentUserId}`);

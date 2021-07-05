@@ -1,21 +1,21 @@
 <template>
   <div class="conversation-show">
-    <span v-if="currentUser.band == true">
-      <!-- <img :src="conversation.host.profile_picture" alt="" /> -->
-      <!-- <h3>{{ conversation.host.name }}</h3>
+    <!-- <span v-if="currentUser.band == true">
+      <img :src="conversation.host.profile_picture" alt="" />
+      <h3>{{ conversation.host.name }}</h3>
       <div v-for="(message, index) in conversation.messages" v-bind:key="message.id">
-        <p>{{ conversation.messages[index].body }}</p>
-      </div> -->
-    </span>
-    <span v-if="currentUser.band == false">
-      <!-- <img :src="conversation.band.profile_picture" alt="" /> -->
-      <!-- <h3>{{ conversation.messages[0].user.name }}</h3> -->
-      <div v-for="(message, index) in conversation.messages" v-bind:key="message.id">
-        <p>{{ conversation.messages[index].user.name }}</p>
-        <img :src="conversation.messages[index].user.profile_picture" alt="" />
         <p>{{ conversation.messages[index].body }}</p>
       </div>
-    </span>
+    </span> -->
+    <!-- <span v-if="currentUser.band == false"> -->
+    <!-- <img :src="conversation.band.profile_picture" alt="" /> -->
+    <!-- <h3>{{ conversation.messages[0].user.name }}</h3> -->
+    <div v-for="(message, index) in conversation.messages" v-bind:key="message.id">
+      <p>{{ conversation.messages[index].user.name }}</p>
+      <img :src="conversation.messages[index].user.profile_picture" alt="" />
+      <p>{{ conversation.messages[index].body }}</p>
+    </div>
+    <!-- </span> -->
     <span>
       <form v-on:submit.prevent="createMessage()">
         <ul>

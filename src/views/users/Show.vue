@@ -11,6 +11,8 @@
       <div v-for="(image, index) in user.images" v-bind:key="image.id">
         <img :src="user.images[index].url" alt="" />
       </div>
+      <!-- Needs to trigger add image pop out -->
+      <router-link to="/images/new"><button v-if="$parent.getUserId() == user.id">Add Image</button></router-link>
     </span>
     <span v-if="user.band == true">
       Tours:
@@ -115,6 +117,8 @@ export default {
       user: {},
       errors: [],
       tour: {},
+      image: {},
+      newImageParams: {},
     };
   },
   created: function () {
