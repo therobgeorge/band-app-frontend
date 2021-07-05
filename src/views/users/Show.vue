@@ -10,7 +10,7 @@
       <p>{{ user.accommodation_description }}</p>
       <div v-for="(image, index) in user.images" v-bind:key="image.id">
         <img :src="user.images[index].url" alt="" />
-        <button v-if="$parent.getUserId() == user.id" v-on:click="destroyImage(user.images[index].id)">Delete</button>
+        <button v-if="$parent.getUserId() == user.id" v-on:click="destroyImage(user.images[index])">Delete</button>
       </div>
       <router-link to="/images/new"><button v-if="$parent.getUserId() == user.id">Add Image</button></router-link>
     </span>
@@ -29,7 +29,7 @@
             <td>{{ user.tours[index].comment }}</td>
             <td v-if="$parent.getUserId() == user.id"><button>Edit</button></td>
             <td v-if="$parent.getUserId() == user.id">
-              <button v-on:click="destroyTour(user.tours[index].id)">Delete</button>
+              <button v-on:click="destroyTour(user.tours[index])">Delete</button>
             </td>
           </tr>
         </table>
@@ -150,16 +150,26 @@ export default {
           console.log(this.errors);
         });
     },
-    destroyTour: function (tour_id) {
+    destroyTour: function (tour) {
       if (confirm("Confirm Delete Tour Stop"))
-        axios.delete(`/tours/${tour_id}`).then((response) => {
+        axios.delete(`/tours/${tour.id}`).then((response) => {
           console.log(response.data);
+          for (var i = 0; i < this.user.tours.length; i++) {
+            if (this.user.tours[i] === tour) {
+              this.user.tours.splice(i, 1);
+            }
+          }
         });
     },
-    destroyImage: function (image_id) {
+    destroyImage: function (image) {
       if (confirm("Confirm Delete Image"))
-        axios.delete(`/images/${image_id}`).then((response) => {
+        axios.delete(`/images/${image.id}`).then((response) => {
           console.log(response.data);
+          for (var i = 0; i < this.user.images.length; i++) {
+            if (this.user.images[i] === image) {
+              this.user.images.splice(i, 1);
+            }
+          }
         });
     },
   },

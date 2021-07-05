@@ -75,6 +75,7 @@ export default {
         .post("/messages", this.newMessageParams)
         .then((response) => {
           console.log(response.data);
+          this.conversation.messages << response.data;
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
