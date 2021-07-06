@@ -33,6 +33,18 @@
         />
       </div>
       <div class="form-group">
+        <label>Profile Picture:</label>
+        <input type="text" class="form-control" v-model="newUserParams.profile_picture" placeholder="Picture URL" />
+      </div>
+      <div class="form-group">
+        <label>Bio:</label>
+        <textarea v-model="newUserParams.bio" cols="30" rows="10" placeholder="Tell us about you!"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Band:</label>
+        <input type="checkbox" id="band" name="band" value="true" class="form-control" v-model="newUserParams.band" />
+      </div>
+      <div class="form-group">
         <label>Address:</label>
         <textarea
           v-model="newUserParams.address"
@@ -49,18 +61,6 @@
           rows="10"
           placeholder="Accomodation Description"
         ></textarea>
-      </div>
-      <div class="form-group">
-        <label>Band:</label>
-        <input type="checkbox" id="band" name="band" value="true" class="form-control" v-model="newUserParams.band" />
-      </div>
-      <div class="form-group">
-        <label>Profile Picture:</label>
-        <input type="text" class="form-control" v-model="newUserParams.profile_picture" placeholder="Picture URL" />
-      </div>
-      <div class="form-group">
-        <label>Bio:</label>
-        <textarea v-model="newUserParams.bio" cols="30" rows="10" placeholder="Tell us about you!"></textarea>
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>

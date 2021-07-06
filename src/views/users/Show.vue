@@ -23,8 +23,8 @@
             <th>Location</th>
             <th>Comment</th>
           </tr>
-          <tr v-for="(tour, index) in user.tours" v-bind:key="tour.id">
-            <td>{{ user.tours[index].date }}</td>
+          <tr v-for="(tour, index) in orderBy(user.tours, 'date')" v-bind:key="tour.id">
+            <td>{{ formatDate(user.tours[index].date) }}</td>
             <td>{{ user.tours[index].location }}</td>
             <td>{{ user.tours[index].comment }}</td>
             <td v-if="$parent.getUserId() == user.id"><button>Edit</button></td>
@@ -79,6 +79,7 @@
           <textarea v-model="user.bio" cols="30" rows="10"></textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
+        <button v-on:click="destroyUser()">Delete Profile</button>
       </form>
     </span>
     <!-- Edit tour current user will be on button -->
@@ -111,7 +112,11 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+import Vue2Filters from "vue2-filters";
+
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       user: {},
@@ -150,6 +155,16 @@ export default {
           console.log(this.errors);
         });
     },
+    destroyUser: function () {
+      if (confirm("Confirm Delete Your Profile"))
+        axios.delete(`/users/${this.user.id}`).then((response) => {
+          console.log(response.data);
+          delete axios.defaults.headers.common["Authorization"];
+          localStorage.removeItem("jwt");
+          localStorage.removeItem("user_id");
+          this.$router.push("/");
+        });
+    },
     destroyTour: function (tour) {
       if (confirm("Confirm Delete Tour Stop"))
         axios.delete(`/tours/${tour.id}`).then((response) => {
@@ -171,6 +186,9 @@ export default {
             }
           }
         });
+    },
+    formatDate: function (date) {
+      return moment(date).format("M/D/YY");
     },
   },
 };
