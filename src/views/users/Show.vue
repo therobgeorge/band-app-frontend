@@ -8,9 +8,9 @@
     <span v-if="user.band == false">
       Accommodation:
       <p>{{ user.accommodation_description }}</p>
-      <div v-for="(image, index) in user.images" v-bind:key="image.id">
-        <img :src="user.images[index].url" alt="" />
-        <button v-if="$parent.getUserId() == user.id" v-on:click="destroyImage(user.images[index])">Delete</button>
+      <div v-for="image in user.images" v-bind:key="image.id">
+        <img :src="image.url" alt="" />
+        <button v-if="$parent.getUserId() == user.id" v-on:click="destroyImage(image)">Delete</button>
       </div>
       <router-link to="/images/new"><button v-if="$parent.getUserId() == user.id">Add Image</button></router-link>
     </span>
@@ -23,13 +23,13 @@
             <th>Location</th>
             <th>Comment</th>
           </tr>
-          <tr v-for="(tour, index) in orderBy(user.tours, 'date')" v-bind:key="tour.id">
-            <td>{{ formatDate(user.tours[index].date) }}</td>
-            <td>{{ user.tours[index].location }}</td>
-            <td>{{ user.tours[index].comment }}</td>
+          <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
+            <td>{{ formatDate(tour.date) }}</td>
+            <td>{{ tour.location }}</td>
+            <td>{{ tour.comment }}</td>
             <td v-if="$parent.getUserId() == user.id"><button>Edit</button></td>
             <td v-if="$parent.getUserId() == user.id">
-              <button v-on:click="destroyTour(user.tours[index])">Delete</button>
+              <button v-on:click="destroyTour(tour)">Delete</button>
             </td>
           </tr>
         </table>
@@ -189,6 +189,16 @@ export default {
     },
     formatDate: function (date) {
       return moment(date).format("M/D/YY");
+    },
+    isFuture: function (date) {
+      return moment().format("YYYY-MM-DD") <= date;
+    },
+  },
+  computed: {
+    futureTours: function () {
+      return this.user.tours.filter((tour) => {
+        return this.isFuture(tour.date);
+      });
     },
   },
 };

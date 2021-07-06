@@ -9,7 +9,7 @@
           <th>Location</th>
           <th>Comment</th>
         </tr>
-        <tr v-for="tour in orderBy(tours, 'date')" v-bind:key="tour.id">
+        <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
           <td>
             <img :src="tour.user.profile_picture" alt="" />
             <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
@@ -51,6 +51,16 @@ export default {
     },
     formatDate: function (date) {
       return moment(date).format("M/D/YY");
+    },
+    isFuture: function (date) {
+      return moment().format("YYYY-MM-DD") <= date;
+    },
+  },
+  computed: {
+    futureTours: function () {
+      return this.tours.filter((tour) => {
+        return this.isFuture(tour.date);
+      });
     },
   },
 };

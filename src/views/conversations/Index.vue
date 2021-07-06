@@ -9,6 +9,7 @@
           <router-link :to="`/conversations/${conversation.id}`">
             <tr>{{ conversation.host.name }}</tr>
           </router-link>
+          <tr>{{ conversation.message[index].created_at }}</tr>
         </table>
       </div>
     </span>
