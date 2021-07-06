@@ -48,7 +48,7 @@
         </ul>
         <div class="form-group">
           <label>Name:</label>
-          <input type="text" class="form-control" v-model="user.name" placeholder="Name" />
+          <input type="text" class="form-control" v-model="user.name" />
         </div>
         <div class="form-group">
           <label>Profile Picture:</label>
@@ -68,15 +68,15 @@
         </div>
         <div class="form-group">
           <label>Address:</label>
-          <input type="text" class="form-control" v-model="user.address" />
+          <textarea v-model="user.address" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group">
           <label>Accommodation:</label>
-          <input type="text" class="form-control" v-model="user.accommodation_description" />
+          <textarea v-model="user.accommodation_description" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group">
           <label>Bio:</label>
-          <input type="text" class="form-control" v-model="user.bio" />
+          <textarea v-model="user.bio" cols="30" rows="10"></textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>

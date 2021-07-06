@@ -14,7 +14,7 @@
             <img :src="tour.user.profile_picture" alt="" />
             <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
           </td>
-          <td>{{ tour.date }}</td>
+          <td>{{ formatDate(tour.date) }}</td>
           <td>{{ tour.location }}</td>
           <td>{{ tour.comment }}</td>
           <!-- need to add link once conversation and message pages are complete -->
@@ -30,6 +30,8 @@
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
+import moment from "moment";
+
 export default {
   mixins: [Vue2Filters.mixin],
   data: function () {
@@ -46,6 +48,9 @@ export default {
         console.log("tours index", response.data);
         this.tours = response.data;
       });
+    },
+    formatDate: function (date) {
+      return moment(date).format("M/D/YY");
     },
   },
 };
