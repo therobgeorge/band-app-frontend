@@ -10,15 +10,17 @@
           <th>Comment</th>
         </tr>
         <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
-          <td>
-            <img :src="tour.user.profile_picture" alt="" />
-            <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
-          </td>
-          <td>{{ formatDate(tour.date) }}</td>
-          <td>{{ tour.location }}</td>
-          <td>{{ tour.comment }}</td>
-          <!-- need to add link once conversation and message pages are complete -->
-          <td><button>Message</button></td>
+          <span v-if="tour.distance < 50">
+            <td>
+              <img :src="tour.user.profile_picture" alt="" />
+              <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
+            </td>
+            <td>{{ formatDate(tour.date) }}</td>
+            <td>{{ tour.location }}</td>
+            <td>{{ tour.comment }}</td>
+            <!-- need to add link once conversation and message pages are complete -->
+            <td><button>Message</button></td>
+          </span>
         </tr>
       </table>
     </div>
@@ -37,16 +39,30 @@ export default {
   data: function () {
     return {
       tours: [],
+      currentUserId: "",
+      currentUser: {},
     };
   },
   created: function () {
     this.indexTours();
+    if (localStorage.user_id) {
+      this.currentUserId = localStorage.user_id;
+    }
+  },
+  mounted() {
+    this.getCurrentUser();
   },
   methods: {
     indexTours: function () {
       axios.get("/tours").then((response) => {
         console.log("tours index", response.data);
         this.tours = response.data;
+      });
+    },
+    getCurrentUser: function () {
+      axios.get(`/users/${this.currentUserId}`).then((response) => {
+        console.log("Current User", response.data);
+        this.currentUser = response.data;
       });
     },
     formatDate: function (date) {

@@ -3,8 +3,6 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/tours">Tours</router-link>
-      |
       <span v-if="!isLoggedIn()">
         <router-link to="/signup">Sign Up</router-link>
         |
@@ -12,6 +10,8 @@
         |
       </span>
       <span v-if="isLoggedIn()">
+        <router-link to="/tours">Tours</router-link>
+        |
         <router-link to="/conversations">Messages</router-link>
         |
         <router-link :to="`/users/${getUserId()}`">My Profile</router-link>

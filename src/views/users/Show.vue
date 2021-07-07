@@ -1,7 +1,7 @@
 <template>
   <div class="users-show">
     <h2>{{ user.name }}</h2>
-    <router-link :to="`users/${user.id}/edit`">
+    <router-link :to="`/users/${user.id}/edit`">
       <button v-if="$parent.getUserId() == user.id">Edit User</button>
     </router-link>
     <img :src="user.profile_picture" alt="" />

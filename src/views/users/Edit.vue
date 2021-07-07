@@ -30,17 +30,19 @@
           <input type="password" class="form-control" v-model="editUserParams.password_confirmation" />
         </div>
         <div class="form-group">
-          <label>Address:</label>
-          <textarea v-model="editUserParams.address" cols="30" rows="10"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Accommodation:</label>
-          <textarea v-model="editUserParams.accommodation_description" cols="30" rows="10"></textarea>
-        </div>
-        <div class="form-group">
           <label>Bio:</label>
           <textarea v-model="editUserParams.bio" cols="30" rows="10"></textarea>
         </div>
+        <span v-if="editUserParams.band == false">
+          <div class="form-group">
+            <label>Address:</label>
+            <textarea v-model="editUserParams.address" cols="30" rows="10"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Accommodation:</label>
+            <textarea v-model="editUserParams.accommodation_description" cols="30" rows="10"></textarea>
+          </div>
+        </span>
         <input type="submit" class="btn btn-primary" value="Submit" />
         <button v-on:click="destroyUser()">Delete Profile</button>
       </form>
