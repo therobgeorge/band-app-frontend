@@ -1,7 +1,9 @@
 <template>
   <div class="users-show">
     <h2>{{ user.name }}</h2>
-    <button v-if="$parent.getUserId() == user.id">Edit User</button>
+    <router-link :to="`users/${user.id}/edit`">
+      <button v-if="$parent.getUserId() == user.id">Edit User</button>
+    </router-link>
     <img :src="user.profile_picture" alt="" />
     <p>{{ user.bio }}</p>
 
@@ -37,51 +39,6 @@
       <router-link to="/tours/new"><button v-if="$parent.getUserId() == user.id">Add Tour Stop</button></router-link>
     </span>
     <!-- testing functionality needs to be added to modal -->
-    <!-- edit user current user will be on buttons -->
-    <span>
-      <form v-on:submit.prevent="updateUser()">
-        <h1>Edit User</h1>
-        <ul>
-          <li class="text-danger" v-for="error in errors" v-bind:key="error">
-            {{ error }}
-          </li>
-        </ul>
-        <div class="form-group">
-          <label>Name:</label>
-          <input type="text" class="form-control" v-model="user.name" />
-        </div>
-        <div class="form-group">
-          <label>Profile Picture:</label>
-          <input type="text" class="form-control" v-model="user.profile_picture" />
-        </div>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="text" class="form-control" v-model="user.email" />
-        </div>
-        <div class="form-group">
-          <label>Password:</label>
-          <input type="password" class="form-control" v-model="user.password" />
-        </div>
-        <div class="form-group">
-          <label>Password Confirmation:</label>
-          <input type="password" class="form-control" v-model="user.password_confirmation" />
-        </div>
-        <div class="form-group">
-          <label>Address:</label>
-          <textarea v-model="user.address" cols="30" rows="10"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Accommodation:</label>
-          <textarea v-model="user.accommodation_description" cols="30" rows="10"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Bio:</label>
-          <textarea v-model="user.bio" cols="30" rows="10"></textarea>
-        </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
-        <button v-on:click="destroyUser()">Delete Profile</button>
-      </form>
-    </span>
     <!-- Edit tour current user will be on button -->
     <span>
       <form v-on:submit.prevent="updateTour()">
@@ -133,17 +90,6 @@ export default {
     });
   },
   methods: {
-    updateUser: function () {
-      axios
-        .patch(`/users/${this.user.id}`, this.user)
-        .then((response) => {
-          console.log("Edit User Object", response.data);
-        })
-        .catch((error) => {
-          this.errors = error.response.data.errors;
-          console.log(this.errors);
-        });
-    },
     updateTour: function () {
       axios
         .patch(`/tours/${this.tour.id}`, this.tour)
@@ -153,16 +99,6 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
           console.log(this.errors);
-        });
-    },
-    destroyUser: function () {
-      if (confirm("Confirm Delete Your Profile"))
-        axios.delete(`/users/${this.user.id}`).then((response) => {
-          console.log(response.data);
-          delete axios.defaults.headers.common["Authorization"];
-          localStorage.removeItem("jwt");
-          localStorage.removeItem("user_id");
-          this.$router.push("/");
         });
     },
     destroyTour: function (tour) {

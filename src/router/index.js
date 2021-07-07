@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import ToursIndex from "../views/tours/Index.vue";
 import UsersShow from "../views/users/Show.vue";
+import UsersEdit from "../views/users/Edit.vue";
 import Logout from "../views/Logout.vue";
 import ToursNew from "../views/tours/New.vue";
 import ConversationsIndex from "../views/conversations/Index.vue";
@@ -51,6 +52,11 @@ const routes = [
     path: "/users/:id",
     name: "users-show",
     component: UsersShow,
+  },
+  {
+    path: "/users/:id/edit",
+    name: "users-edit",
+    component: UsersEdit,
   },
   {
     path: "/tours/new",
