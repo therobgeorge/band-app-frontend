@@ -10,10 +10,10 @@
     <!-- <span v-if="currentUser.band == false"> -->
     <!-- <img :src="conversation.band.profile_picture" alt="" /> -->
     <!-- <h3>{{ conversation.messages[0].user.name }}</h3> -->
-    <div v-for="(message, index) in conversation.messages" v-bind:key="message.id">
-      <p>{{ conversation.messages[index].user.name }}</p>
-      <img :src="conversation.messages[index].user.profile_picture" alt="" />
-      <p>{{ conversation.messages[index].body }}</p>
+    <div v-for="message in conversation.messages" v-bind:key="message.id">
+      <p>{{ message.user.name }}</p>
+      <img :src="message.user.profile_picture" alt="" />
+      <p>{{ message.body }}</p>
     </div>
     <!-- </span> -->
     <span>
@@ -25,7 +25,7 @@
         </ul>
         <div class="form-group">
           <label>New Message</label>
-          <input type="text" class="form-control" v-model="newMessageParams.body" />
+          <textarea v-model="newMessageParams.body" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group">
           <label>convo id test</label>
