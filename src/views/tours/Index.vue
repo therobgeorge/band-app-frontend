@@ -19,7 +19,7 @@
             <td>{{ tour.location }}</td>
             <td>{{ tour.comment }}</td>
             <!-- need to add link once conversation and message pages are complete -->
-            <td><button>Message</button></td>
+            <td><button v-on:click="createConversation(tour)">Message</button></td>
           </span>
         </tr>
       </table>
@@ -64,6 +64,11 @@ export default {
         console.log("Current User", response.data);
         this.currentUser = response.data;
       });
+    },
+    createConversation: function (tour) {
+      console.log("tour", tour);
+      // if (this.currentUser.conversations[0].include(:band_id 24)) {
+      console.log("user", this.currentUser.conversations[0]);
     },
     formatDate: function (date) {
       return moment(date).format("M/D/YY");
