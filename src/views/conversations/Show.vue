@@ -2,7 +2,9 @@
   <div class="conversation-show">
     <!-- <h3>Conversation with: {{ conversation.}}</h3> -->
     <div v-for="message in conversation.messages" v-bind:key="message.id">
-      <p>{{ message.user.name }}</p>
+      <router-link :to="`/users/${message.user.id}`">
+        <p>{{ message.user.name }}</p>
+      </router-link>
       <img :src="message.user.profile_picture" alt="" />
       <p>{{ message.body }}</p>
     </div>
@@ -81,6 +83,7 @@ export default {
         .post("/messages", params)
         .then((response) => {
           console.log(response.data);
+          this.newMessageParams = "";
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

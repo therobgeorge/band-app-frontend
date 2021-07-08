@@ -12,10 +12,6 @@
         <input type="text" class="form-control" v-model="newUserParams.name" placeholder="Full Name or Band Name" />
       </div>
       <div class="form-group">
-        <label>Username:</label>
-        <input type="text" class="form-control" v-model="newUserParams.user_name" placeholder="username" />
-      </div>
-      <div class="form-group">
         <label>Email:</label>
         <input type="email" class="form-control" v-model="newUserParams.email" placeholder="email@email.com" />
       </div>

@@ -9,17 +9,19 @@
           <router-link :to="`/conversations/${conversation.id}`">
             <tr>{{ conversation.host.name }}</tr>
           </router-link>
+          <tr>{{ conversation.messages[1].created_at }}</tr>
         </table>
       </div>
     </span>
     <!-- add link to conversation show page -->
     <span v-if="currentUser.band == false">
-      <div v-for="conversation in conversations" v-bind:key="conversation.id">
+      <div v-for="conversation in orderBy(conversations)" v-bind:key="conversation.id">
         <table>
           <tr><img :src="conversation.band.profile_picture" alt="" /></tr>
           <router-link :to="`/conversations/${conversation.id}`">
             <tr>{{ conversation.band.name }}</tr>
           </router-link>
+          <tr>{{ conversation.messages[1].created_at }}</tr>
         </table>
       </div>
     </span>
@@ -30,7 +32,10 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       conversations: {},

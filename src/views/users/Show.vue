@@ -60,6 +60,11 @@
           <label>Comment:</label>
           <input type="text" class="form-control" v-model="tour.comment" />
         </div>
+        <div class="form-group">
+          <!-- Edit button will pass this -->
+          <label>Tour ID:</label>
+          <input type="text" class="form-control" v-model="tour.id" />
+        </div>
 
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
