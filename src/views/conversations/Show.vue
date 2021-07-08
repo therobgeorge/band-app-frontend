@@ -26,6 +26,7 @@
 
 <script>
 import axios from "axios";
+import ActionCable from "actioncable";
 export default {
   data: function () {
     return {
@@ -40,6 +41,21 @@ export default {
     axios.get(`/conversations/${this.$route.params.id}`).then((response) => {
       console.log("Conversations Show", response.data);
       this.conversation = response.data;
+    });
+    var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+    cable.subscriptions.create("MessagesChannel", {
+      connected: () => {
+        // Called when the subscription is ready for use on the server
+        console.log("Connected to MessagesChannel");
+      },
+      disconnected: () => {
+        // Called when the subscription has been terminated by the server
+      },
+      received: (data) => {
+        // Called when there's incoming data on the websocket for this channel
+        console.log("Data from MessagesChannel:", data);
+        this.conversation.messages.unshift(data); // update the messages in real time
+      },
     });
     if (localStorage.user_id) {
       this.currentUserId = localStorage.user_id;
@@ -64,7 +80,7 @@ export default {
         .post("/messages", params)
         .then((response) => {
           console.log(response.data);
-          this.conversation.messages.push(response.data);
+          // this.conversation.messages.push(response.data);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
