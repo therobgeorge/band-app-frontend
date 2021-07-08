@@ -54,7 +54,7 @@ export default {
       received: (data) => {
         // Called when there's incoming data on the websocket for this channel
         console.log("Data from MessagesChannel:", data);
-        this.conversation.messages.unshift(data); // update the messages in real time
+        this.conversation.messages.push(data); // update the messages in real time
       },
     });
     if (localStorage.user_id) {
@@ -80,7 +80,6 @@ export default {
         .post("/messages", params)
         .then((response) => {
           console.log(response.data);
-          // this.conversation.messages.push(response.data);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
