@@ -41,6 +41,8 @@ export default {
       tours: [],
       currentUserId: "",
       currentUser: {},
+      currentConversation: {},
+      newConversation: {},
     };
   },
   created: function () {
@@ -67,8 +69,20 @@ export default {
     },
     createConversation: function (tour) {
       console.log("tour", tour);
-      // if (this.currentUser.conversations[0].include(:band_id 24)) {
-      console.log("user", this.currentUser.conversations[0]);
+      if (this.currentUser.conversations.find((key) => key.band_id === tour.user.id)) {
+        this.currentConversation = this.currentUser.conversations.find((key) => key.band_id === tour.user.id);
+        this.$router.push(`/conversations/${this.currentConversation.id}`);
+      } else {
+        var params = {
+          band_id: tour.user.id,
+          host_id: this.currentUser.id,
+        };
+        axios.post("/conversations", params).then((response) => {
+          console.log(response.data);
+          this.newConversation = response.data;
+          this.$router.push(`/conversations/${this.newConversation.id}`);
+        });
+      }
     },
     formatDate: function (date) {
       return moment(date).format("M/D/YY");

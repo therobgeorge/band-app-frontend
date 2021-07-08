@@ -1,5 +1,6 @@
 <template>
   <div class="conversation-show">
+    <!-- <h3>Conversation with: {{ conversation.}}</h3> -->
     <div v-for="message in conversation.messages" v-bind:key="message.id">
       <p>{{ message.user.name }}</p>
       <img :src="message.user.profile_picture" alt="" />
