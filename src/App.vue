@@ -1,6 +1,88 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="header">
+      <!-- class="sticky" for sticky menu -->
+
+      <!-- Top Bar -->
+      <header id="topBar">
+        <div class="container">
+          <!-- Logo -->
+          <router-link class="logo" to="/">
+            <img src="assets/images/logo.png" height="50" alt="" />
+          </router-link>
+        </div>
+        <!-- /.container -->
+      </header>
+      <!-- /Top Bar -->
+
+      <!-- Top Nav -->
+      <header id="topNav">
+        <div class="container">
+          <!-- Mobile Menu Button -->
+          <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Top Nav -->
+          <div class="navbar-collapse nav-main-collapse collapse">
+            <nav class="nav-main">
+              <!--
+									NOTE
+									
+									For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
+									Direct Link Example: 
+
+									<li>
+										<a href="#">HOME</a>
+									</li>
+								-->
+              <ul id="topMain" class="nav nav-pills nav-main">
+                <li class="dropdown">
+                  <router-link to="/signup">
+                    Sign Up
+                    <span>_______</span>
+                  </router-link>
+                </li>
+                <li class="dropdown">
+                  <router-link to="/login">
+                    Log In
+                    <span>______</span>
+                  </router-link>
+                </li>
+                <li class="dropdown">
+                  <router-link to="/tours">
+                    Tours
+                    <span>_____</span>
+                  </router-link>
+                </li>
+                <li class="dropdown">
+                  <router-link to="/conversations">
+                    Messages
+                    <span>________</span>
+                  </router-link>
+                </li>
+                <li class="dropdown">
+                  <router-link to="`/users/${getUserId()}`">
+                    My Profile
+                    <span>__________</span>
+                  </router-link>
+                </li>
+                <li class="dropdown">
+                  <router-link to="/logout">
+                    Logout
+                    <span>______</span>
+                  </router-link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- /Top Nav -->
+        </div>
+        <!-- /.container -->
+      </header>
+      <!-- /Top Nav -->
+    </div>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link>
       |
       <span v-if="!isLoggedIn()">
@@ -18,33 +100,10 @@
         |
         <router-link to="/logout">Logout</router-link>
       </span>
-    </div>
+    </div> -->
     <router-view />
   </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
 
 <script>
 export default {
