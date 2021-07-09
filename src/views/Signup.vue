@@ -36,11 +36,23 @@
         <label>Bio:</label>
         <textarea v-model="newUserParams.bio" cols="30" rows="10" placeholder="Tell us about you!"></textarea>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Band:</label>
         <input type="text" id="band" name="band" class="form-control" v-model="newUserParams.band" />
-      </div>
+      </div> -->
       <div class="form-group">
+        <label>Are You A Band?:</label>
+        <input
+          type="checkbox"
+          id="band"
+          name="band"
+          class="form-control"
+          value="true"
+          v-model="newUserParams.band"
+          Checked
+        />
+      </div>
+      <div class="form-group" v-if="newUserParams.band == false">
         <label>Address:</label>
         <textarea
           v-model="newUserParams.address"
@@ -49,7 +61,7 @@
           placeholder="1234 Street, City, State, Post Code"
         ></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group" v-if="newUserParams.band == false">
         <label>Accommodation Description:</label>
         <textarea
           v-model="newUserParams.accommodation_description"
