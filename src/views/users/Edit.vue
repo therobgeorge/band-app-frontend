@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <label>Profile Picture:</label>
-          <input type="text" class="form-control" v-model="editUserParams.profile_picture" />
+          <input type="file" v-on:change="setFile($event)" ref="fileInput" class="form-control" />
         </div>
         <div class="form-group">
           <label>Email:</label>
@@ -59,6 +59,7 @@ export default {
     return {
       editUserParams: {},
       errors: [],
+      profile_picture: "",
     };
   },
   created: function () {
@@ -68,9 +69,25 @@ export default {
     });
   },
   methods: {
+    setFile: function (event) {
+      if (event.target.files.length > 0) {
+        this.profile_picture = event.target.files[0];
+      }
+    },
     updateUser: function () {
+      var formData = new FormData();
+      formData.append("name", this.editUserParams.name);
+      formData.append("email", this.editUserParams.email);
+      formData.append("password", this.editUserParams.password);
+      formData.append("password_confirmation", this.editUserParams.password_confirmation);
+      formData.append("bio", this.editUserParams.bio);
+      formData.append("address", this.editUserParams.address);
+      formData.append("acommodation_description", this.editUserParams.acommodation_description);
+      if (this.profile_picture != "") {
+        formData.append("profile_picture", this.profile_picture);
+      }
       axios
-        .patch(`/users/${this.editUserParams.id}`, this.editUserParams)
+        .patch(`/users/${this.editUserParams.id}`, formData)
         .then((response) => {
           console.log("Edit User Object", response.data);
           this.$router.push(`/users/${response.data.id}`);

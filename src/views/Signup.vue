@@ -30,7 +30,7 @@
       </div>
       <div class="form-group">
         <label>Profile Picture:</label>
-        <input type="text" class="form-control" v-model="newUserParams.profile_picture" placeholder="Picture URL" />
+        <input type="file" v-on:change="setFile($event)" ref="fileInput" class="form-control" />
       </div>
       <div class="form-group">
         <label>Bio:</label>
@@ -82,14 +82,29 @@ export default {
   data: function () {
     return {
       newUserParams: {},
-      newImageParams: {},
       errors: [],
+      profile_picture: "",
     };
   },
   methods: {
+    setFile: function (event) {
+      if (event.target.files.length > 0) {
+        this.profile_picture = event.target.files[0];
+      }
+    },
     submit: function () {
+      var formData = new FormData();
+      formData.append("name", this.newUserParams.name);
+      formData.append("email", this.newUserParams.email);
+      formData.append("password", this.newUserParams.password);
+      formData.append("password_confirmation", this.newUserParams.password_confirmation);
+      formData.append("bio", this.newUserParams.bio);
+      formData.append("band", this.newUserParams.band);
+      formData.append("address", this.newUserParams.address);
+      formData.append("acommodation_description", this.newUserParams.acommodation_description);
+      formData.append("profile_picture", this.profile_picture);
       axios
-        .post("/users", this.newUserParams)
+        .post("/users", formData)
         .then((response) => {
           console.log(response.data);
           this.$router.push("/login");

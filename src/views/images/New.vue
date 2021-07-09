@@ -8,8 +8,8 @@
         </li>
       </ul>
       <div class="form-group">
-        <label>Image URL:</label>
-        <input type="text" class="form-control" v-model="newImageParams.url" />
+        <label>Image:</label>
+        <input type="file" v-on:change="setFile($event)" ref="fileInput" class="form-control" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -23,7 +23,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newImageParams: {},
+      image: "",
       errors: [],
       currentUserId: "",
     };
@@ -34,9 +34,16 @@ export default {
     }
   },
   methods: {
+    setFile: function (event) {
+      if (event.target.files.length > 0) {
+        this.image = event.target.files[0];
+      }
+    },
     createImage: function () {
+      var formData = new FormData();
+      formData.append("image", this.image);
       axios
-        .post("/images", this.newImageParams)
+        .post("/images", formData)
         .then((response) => {
           console.log(response.data);
           this.$router.push(`/users/${this.currentUserId}`);
