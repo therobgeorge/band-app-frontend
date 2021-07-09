@@ -8,7 +8,7 @@
         <div class="container">
           <!-- Logo -->
           <router-link class="logo" to="/">
-            <img src="assets/images/logo.png" height="50" alt="" />
+            <img src="/my-images/houseshow.png" height="50" alt="" />
           </router-link>
         </div>
         <!-- /.container -->
@@ -37,37 +37,37 @@
 									</li>
 								-->
               <ul id="topMain" class="nav nav-pills nav-main">
-                <li class="dropdown">
+                <li v-if="!isLoggedIn()" class="dropdown">
                   <router-link to="/signup">
                     Sign Up
                     <span>_______</span>
                   </router-link>
                 </li>
-                <li class="dropdown">
+                <li v-if="!isLoggedIn()" class="dropdown">
                   <router-link to="/login">
                     Log In
                     <span>______</span>
                   </router-link>
                 </li>
-                <li class="dropdown">
+                <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="/tours">
                     Tours
                     <span>_____</span>
                   </router-link>
                 </li>
-                <li class="dropdown">
+                <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="/conversations">
                     Messages
                     <span>________</span>
                   </router-link>
                 </li>
-                <li class="dropdown">
+                <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="`/users/${getUserId()}`">
                     My Profile
                     <span>__________</span>
                   </router-link>
                 </li>
-                <li class="dropdown">
+                <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="/logout">
                     Logout
                     <span>______</span>

@@ -1,6 +1,135 @@
 <template>
   <div class="signup">
-    <form v-on:submit.prevent="submit()">
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            Login
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <!-- REGISTER -->
+          <div class="col-md-6 col-sm-6">
+            <!-- registration form -->
+            <form action="#" method="post" class="sky-form boxed">
+              <header>Register an account</header>
+
+              <fieldset>
+                <section>
+                  <label class="input">
+                    <input required type="text" v-model="newUserParams.name" placeholder="Full Name or Band Name" />
+                    <b class="tooltip tooltip-bottom-right">Please enter a name.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <label>Profile Picture:</label>
+                    <input type="file" v-on:change="setFile($event)" ref="fileInput" />
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <i class="icon-append fa fa-envelope"></i>
+                    <input required type="email" v-model="newUserParams.email" placeholder="Email address" />
+                    <b class="tooltip tooltip-bottom-right">Please enter an email address.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <i class="icon-append fa fa-lock"></i>
+                    <input required type="password" v-model="newUserParams.password" placeholder="Password" />
+                    <b class="tooltip tooltip-bottom-right">Please enter a password.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <i class="icon-append fa fa-lock"></i>
+                    <input
+                      required
+                      type="password"
+                      v-model="newUserParams.password_confirmation"
+                      placeholder="Confirm password"
+                    />
+                    <b class="tooltip tooltip-bottom-right">Please enter a password.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <textarea
+                      class="form-control"
+                      required
+                      v-model="newUserParams.bio"
+                      rows="10"
+                      placeholder="Bio: Tell us about you!"
+                    ></textarea>
+                    <b class="tooltip tooltip-bottom-right">Please enter a bio.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="checkbox">
+                    <input type="checkbox" name="checkbox" value="true" v-model="newUserParams.band" Checked />
+                    <i></i>
+                    Are you a band?
+                  </label>
+                </section>
+              </fieldset>
+
+              <fieldset v-if="newUserParams.band == false">
+                <section>
+                  <label class="input">
+                    <textarea
+                      class="form-control"
+                      required
+                      v-model="newUserParams.address"
+                      rows="10"
+                      placeholder="Enter full address: 1234 Street Address, City, State, Post Code"
+                    ></textarea>
+                    <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <textarea
+                      class="form-control"
+                      required
+                      v-model="newUserParams.accommodation_description"
+                      rows="10"
+                      placeholder="Housing Description: (i.e., I have one spare room with a bed, and a living room with a couch."
+                    ></textarea>
+                    <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
+                  </label>
+                </section>
+              </fieldset>
+              <footer>
+                <button type="submit" class="button">Submit</button>
+              </footer>
+            </form>
+            <!-- /registration form -->
+          </div>
+          <!-- /REGISTER -->
+        </div>
+      </div>
+    </section>
+    <!-- /CONTENT -->
+
+    <!-- <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
@@ -36,10 +165,6 @@
         <label>Bio:</label>
         <textarea v-model="newUserParams.bio" cols="30" rows="10" placeholder="Tell us about you!"></textarea>
       </div>
-      <!-- <div class="form-group">
-        <label>Band:</label>
-        <input type="text" id="band" name="band" class="form-control" v-model="newUserParams.band" />
-      </div> -->
       <div class="form-group">
         <label>Are You A Band?:</label>
         <input
@@ -71,7 +196,7 @@
         ></textarea>
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
-    </form>
+    </form> -->
   </div>
 </template>
 
