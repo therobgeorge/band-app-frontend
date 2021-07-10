@@ -9,7 +9,6 @@
     <!-- CONTENT -->
     <section>
       <div class="container">
-        <!-- BORN TO BE A WINNER -->
         <article class="row">
           <div class="col-md-6">
             <div
@@ -36,76 +35,177 @@
             </p>
           </div>
         </article>
-        <!-- /BORN TO BE A WINNER -->
 
         <hr />
         <!-- separator -->
       </div>
       <!-- /.container -->
 
-      <!-- MY WORK -->
-      <div class="container">
-        <h3>
-          MY
-          <strong>WORK</strong>
-        </h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+      <div class="col-md-9">
+        <!-- CENTER -->
 
-        <div class="row">
-          <div class="col-sm-3 col-md-3 col-xs-6">
-            <div class="box-content thumbnail text-center">
-              <a href="portfolio-single-basic.html" class="item-image">
-                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a1.jpg" alt="" />
-                <h3>
-                  <span>Epona</span>
-                  <br />
-                  <small>Brand</small>
-                </h3>
-              </a>
-            </div>
+        <!-- STANDARD BUTTONS -->
+        <div v-if="user.band == false" class="panel panel-light margin-bottom60">
+          <div class="panel-heading">
+            <h3 class="panel-title">My Space</h3>
           </div>
 
-          <div class="col-sm-3 col-md-3 col-xs-6">
-            <div class="box-content thumbnail text-center">
-              <a href="portfolio-single-basic.html" class="item-image">
-                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a2.jpg" alt="" />
-                <h3>
-                  <span>Atropos</span>
-                  <br />
-                  <small>Logo</small>
-                </h3>
-              </a>
-            </div>
-          </div>
+          <div class="panel-body">
+            <p>{{ user.accommodation_description }}</p>
 
-          <div class="col-sm-3 col-md-3 col-xs-6">
-            <div class="box-content thumbnail text-center">
-              <a href="portfolio-single-basic.html" class="item-image">
-                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a3.jpg" alt="" />
-                <h3>
-                  <span>Deusone</span>
-                  <br />
-                  <small>Development</small>
-                </h3>
-              </a>
-            </div>
-          </div>
+            <div
+              class="owl-carousel controlls-over owl-theme owl-carousel-init"
+              data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": false, "transitionStyle":"fadeUp"}'
+              style="opacity: 1; display: block"
+            >
+              <!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
+              <div class="owl-wrapper-outer autoHeight" style="height: 476px">
+                <div
+                  class="owl-wrapper"
+                  style="
+                    width: 3392px;
+                    left: 0px;
+                    display: block;
+                    transition: all 0ms ease 0s;
+                    transform: translate3d(-848px, 0px, 0px);
+                    transform-origin: 1272px center;
+                    perspective-origin: 1272px center;
+                  "
+                >
+                  <div class="owl-item" style="width: 848px">
+                    <div v-for="image in user.images" v-bind:key="image.id">
+                      <div>
+                        <img alt="" class="img-responsive" :src="image.url" />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="owl-item" style="width: 848px">
+                    <div>
+                      <img alt="" class="img-responsive" src="assets/images/demo/about_2.jpg" />
+                    </div>
+                  </div> -->
+                </div>
+              </div>
 
-          <div class="col-sm-3 col-md-3 col-xs-6">
-            <div class="box-content thumbnail text-center">
-              <a href="portfolio-single-basic.html" class="item-image">
-                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a4.jpg" alt="" />
-                <h3>
-                  <span>Isisone</span>
-                  <br />
-                  <small>Design</small>
-                </h3>
-              </a>
+              <div class="owl-controls clickable">
+                <div class="owl-buttons">
+                  <div class="owl-prev"><i class="fa fa-chevron-left"></i></div>
+                  <div class="owl-next"><i class="fa fa-chevron-right"></i></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- /STANDARD BUTTONS -->
       </div>
-      <!-- /MY WORK -->
+      <div class="col-md-9">
+        <!-- CENTER -->
+
+        <!-- STANDARD BUTTONS -->
+        <div v-if="user.band == true" class="panel panel-light margin-bottom60">
+          <div class="panel-heading">
+            <h3 class="panel-title">Tours</h3>
+          </div>
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
+                    <td>{{ formatDate(tour.date) }}</td>
+                    <td>{{ tour.location }}</td>
+                    <td>{{ tour.comment }}</td>
+                    <td v-if="$parent.getUserId() == user.id">
+                      <a
+                        href="#"
+                        class="btn default btn-xs bg-gray white"
+                        data-toggle="modal"
+                        data-target="#editTour"
+                        v-on:click="setEditTour(tour)"
+                      >
+                        <i class="fa fa-edit white"></i>
+                        Edit
+                      </a>
+                      <div
+                        class="modal fade"
+                        id="editTour"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="editTourLabel"
+                        aria-hidden="true"
+                        style="display: none"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <!-- modal header -->
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <h4 class="modal-title" id="editTourLabel">Edit Tour Date</h4>
+                            </div>
+                            <!-- /modal header -->
+
+                            <!-- modal body -->
+                            <div class="modal-body">
+                              <form v-on:submit.prevent="updateTour()">
+                                <h1>Edit Tour</h1>
+                                <ul>
+                                  <li class="text-danger" v-for="error in errors" v-bind:key="error">
+                                    {{ error }}
+                                  </li>
+                                </ul>
+                                <div class="form-group">
+                                  <label>Date:</label>
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    v-model="editTourParams.date"
+                                    placeholder="Name"
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Location:</label>
+                                  <input type="text" class="form-control" v-model="editTourParams.location" />
+                                </div>
+                                <div class="form-group">
+                                  <label>Comment:</label>
+                                  <input type="text" class="form-control" v-model="editTourParams.comment" />
+                                </div>
+                                <!-- <div class="form-group">
+                                  
+                                  <label>Tour ID:</label>
+                                  <input type="text" class="form-control" v-model="editTourParams.id" />
+                                </div> -->
+
+                                <input type="submit" class="btn btn-primary" value="Submit" />
+                              </form>
+                            </div>
+                            <!-- /modal body -->
+                          </div>
+                        </div>
+                      </div>
+                      <a href="#" class="btn default btn-xs bg-red white" v-on:click="destroyTour(tour)">
+                        <i class="fa fa-times white"></i>
+                        Delete
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <router-link to="/tours/new">
+                <button v-if="$parent.getUserId() == user.id" class="btn btn-primary btn-sm">Add Tour Stop</button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <!-- /STANDARD BUTTONS -->
+      </div>
     </section>
     <!-- /CONTENT -->
     <!-- old junk delete when everything is working -->
@@ -169,9 +269,9 @@
           <label>Comment:</label>
           <input type="text" class="form-control" v-model="tour.comment" />
         </div>
-        <div class="form-group"> -->
-    <!-- Edit button will pass this -->
-    <!-- <label>Tour ID:</label>
+        <div class="form-group">
+
+          <label>Tour ID:</label>
           <input type="text" class="form-control" v-model="tour.id" />
         </div>
 
@@ -182,6 +282,7 @@
 </template>
 
 <script>
+/* global $ */
 import axios from "axios";
 import moment from "moment";
 import Vue2Filters from "vue2-filters";
@@ -195,6 +296,7 @@ export default {
       tour: {},
       image: {},
       newImageParams: {},
+      editTourParams: {},
     };
   },
   created: function () {
@@ -206,9 +308,10 @@ export default {
   methods: {
     updateTour: function () {
       axios
-        .patch(`/tours/${this.tour.id}`, this.tour)
+        .patch(`/tours/${this.editTourParams.id}`, this.editTourParams)
         .then((response) => {
           console.log("Edit Tour Object", response.data);
+          $("#editTour").modal("hide");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
@@ -236,6 +339,9 @@ export default {
             }
           }
         });
+    },
+    setEditTour: function (tour) {
+      this.editTourParams = tour;
     },
     formatDate: function (date) {
       return moment(date).format("M/D/YY");
