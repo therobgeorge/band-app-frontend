@@ -1,6 +1,115 @@
 <template>
   <div class="users-show">
-    <h2>{{ user.name }}</h2>
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container"></div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <section>
+      <div class="container">
+        <!-- BORN TO BE A WINNER -->
+        <article class="row">
+          <div class="col-md-6">
+            <div
+              class="owl-carousel controlls-over"
+              data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "transitionStyle":"fadeUp"}'
+            >
+              <div>
+                <img class="img-responsive" :src="user.profile_picture" width="555" height="311" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h3>{{ user.name }}</h3>
+            <div v-if="$parent.getUserId() == user.id" class="row">
+              <router-link :to="`/users/${user.id}/edit`">
+                <button type="button" class="btn btn-primary btn-sm">Edit Profile</button>
+              </router-link>
+            </div>
+            <hr />
+
+            <p class="lead">
+              {{ user.bio }}
+            </p>
+          </div>
+        </article>
+        <!-- /BORN TO BE A WINNER -->
+
+        <hr />
+        <!-- separator -->
+      </div>
+      <!-- /.container -->
+
+      <!-- MY WORK -->
+      <div class="container">
+        <h3>
+          MY
+          <strong>WORK</strong>
+        </h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-xs-6">
+            <div class="box-content thumbnail text-center">
+              <a href="portfolio-single-basic.html" class="item-image">
+                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a1.jpg" alt="" />
+                <h3>
+                  <span>Epona</span>
+                  <br />
+                  <small>Brand</small>
+                </h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-md-3 col-xs-6">
+            <div class="box-content thumbnail text-center">
+              <a href="portfolio-single-basic.html" class="item-image">
+                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a2.jpg" alt="" />
+                <h3>
+                  <span>Atropos</span>
+                  <br />
+                  <small>Logo</small>
+                </h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-md-3 col-xs-6">
+            <div class="box-content thumbnail text-center">
+              <a href="portfolio-single-basic.html" class="item-image">
+                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a3.jpg" alt="" />
+                <h3>
+                  <span>Deusone</span>
+                  <br />
+                  <small>Development</small>
+                </h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-3 col-md-3 col-xs-6">
+            <div class="box-content thumbnail text-center">
+              <a href="portfolio-single-basic.html" class="item-image">
+                <img class="img-responsive" src="assets/images/demo/portfolio/thumb/a4.jpg" alt="" />
+                <h3>
+                  <span>Isisone</span>
+                  <br />
+                  <small>Design</small>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /MY WORK -->
+    </section>
+    <!-- /CONTENT -->
+    <!-- old junk delete when everything is working -->
+    <!-- <h2>{{ user.name }}</h2>
     <router-link :to="`/users/${user.id}/edit`">
       <button v-if="$parent.getUserId() == user.id">Edit User</button>
     </router-link>
@@ -37,10 +146,10 @@
         </table>
       </div>
       <router-link to="/tours/new"><button v-if="$parent.getUserId() == user.id">Add Tour Stop</button></router-link>
-    </span>
+    </span> -->
     <!-- testing functionality needs to be added to modal -->
     <!-- Edit tour current user will be on button -->
-    <span>
+    <!-- <span>
       <form v-on:submit.prevent="updateTour()">
         <h1>Edit Tour</h1>
         <ul>
@@ -60,15 +169,15 @@
           <label>Comment:</label>
           <input type="text" class="form-control" v-model="tour.comment" />
         </div>
-        <div class="form-group">
-          <!-- Edit button will pass this -->
-          <label>Tour ID:</label>
+        <div class="form-group"> -->
+    <!-- Edit button will pass this -->
+    <!-- <label>Tour ID:</label>
           <input type="text" class="form-control" v-model="tour.id" />
         </div>
 
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
-    </span>
+    </span> -->
   </div>
 </template>
 

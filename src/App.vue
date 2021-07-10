@@ -62,7 +62,7 @@
                   </router-link>
                 </li>
                 <li v-if="isLoggedIn()" class="dropdown">
-                  <router-link to="`/users/${getUserId()}`">
+                  <router-link :to="`/users/${getUserId()}`">
                     My Profile
                     <span>__________</span>
                   </router-link>
@@ -82,6 +82,8 @@
       </header>
       <!-- /Top Nav -->
     </div>
+
+    <!-- old junk delete when everything is working -->
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>
       |

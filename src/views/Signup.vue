@@ -6,7 +6,7 @@
         <header>
           <h2>
             <!-- Page Title -->
-            Login
+            Sign Up
           </h2>
           <!-- /Page Title -->
         </header>
@@ -21,7 +21,7 @@
           <!-- REGISTER -->
           <div class="col-md-6 col-sm-6">
             <!-- registration form -->
-            <form action="#" method="post" class="sky-form boxed">
+            <form v-on:submit.prevent="submit()" action="#" method="post" class="sky-form boxed">
               <header>Register an account</header>
 
               <fieldset>
@@ -118,7 +118,7 @@
                 </section>
               </fieldset>
               <footer>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" class="button" value="Submit">Submit</button>
               </footer>
             </form>
             <!-- /registration form -->

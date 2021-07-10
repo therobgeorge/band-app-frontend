@@ -1,6 +1,59 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="submit()">
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            Login
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <!-- LOGIN -->
+          <div class="col-md-6 col-sm-6">
+            <!-- login form -->
+            <form v-on:submit.prevent="submit()" action="#" method="post" class="sky-form boxed">
+              <header>I'm a returning customer</header>
+
+              <fieldset>
+                <section>
+                  <label class="input">
+                    <i class="icon-append fa fa-envelope"></i>
+                    <input required type="email" placeholder="Email address" v-model="email" />
+                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                  </label>
+                </section>
+
+                <section>
+                  <label class="input">
+                    <i class="icon-append fa fa-lock"></i>
+                    <input required type="password" placeholder="Password" v-model="password" />
+                    <b class="tooltip tooltip-bottom-right">Enter password</b>
+                  </label>
+                </section>
+              </fieldset>
+              <footer>
+                <button type="submit" class="button" value="Submit">Log in</button>
+              </footer>
+            </form>
+            <!-- /login form -->
+          </div>
+          <!-- /LOGIN -->
+        </div>
+      </div>
+    </section>
+    <!-- /CONTENT -->
+    <!-- old junk delete when everything is working -->
+    <!-- <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -14,7 +67,7 @@
         <input type="password" v-model="password" />
       </div>
       <input type="submit" value="Submit" />
-    </form>
+    </form> -->
   </div>
 </template>
 
