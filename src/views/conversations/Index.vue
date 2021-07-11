@@ -1,8 +1,64 @@
 <template>
   <div class="conversations-index">
-    <h1>Messages</h1>
-    <!-- add link to conversation show page -->
-    <span v-if="currentUser.band == true">
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            <strong>Messages</strong>
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <div class="container">
+      <div class="col-md-4">
+        <section v-if="currentUser.band == true">
+          <ul
+            class="comment list-unstyled"
+            v-for="conversation in orderBy(conversations, 'last_message.created_at', -1)"
+            v-bind:key="conversation.id"
+          >
+            <li class="comment">
+              <!-- avatar -->
+              <router-link :to="`/conversations/${conversation.id}`">
+                <img
+                  class="thumbnail rounded"
+                  :src="conversation.host.profile_picture"
+                  width="25"
+                  height="25"
+                  alt="avatar"
+                />
+              </router-link>
+
+              <!-- comment body -->
+              <div class="comment-body">
+                <a href="#" class="comment-author">
+                  <small class="text-muted pull-right">{{ fromNowDate(conversation.last_message.created_at) }}</small>
+                  <router-link :to="`/conversations/${conversation.id}`">
+                    <span>{{ conversation.host.name }}</span>
+                  </router-link>
+                </a>
+                <p>
+                  {{ conversation.last_message.body }}
+                </p>
+              </div>
+              <!-- /comment body -->
+            </li>
+            <hr />
+          </ul>
+        </section>
+      </div>
+    </div>
+    <!-- /CONTENT -->
+
+    <!-- <h1>Messages</h1> -->
+
+    <!-- <span v-if="currentUser.band == true">
       <div v-for="conversation in orderBy(conversations, 'last_message.created_at', -1)" v-bind:key="conversation.id">
         <table>
           <tr><img :src="conversation.host.profile_picture" alt="test" /></tr>
@@ -14,7 +70,7 @@
         </table>
       </div>
     </span>
-    <!-- add link to conversation show page -->
+
     <span v-if="currentUser.band == false">
       <div v-for="conversation in orderBy(conversations, 'last_message', -1)" v-bind:key="conversation.id">
         <table>
@@ -24,7 +80,7 @@
           </router-link>
         </table>
       </div>
-    </span>
+    </span> -->
   </div>
 </template>
 
@@ -33,6 +89,7 @@
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
+import moment from "moment";
 
 export default {
   mixins: [Vue2Filters.mixin],
@@ -64,6 +121,9 @@ export default {
         console.log("Current User", response.data);
         this.currentUser = response.data;
       });
+    },
+    fromNowDate: function (date) {
+      return moment(date).fromNow();
     },
   },
 };
