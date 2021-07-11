@@ -22,14 +22,11 @@
           <div class="col-md-8">
             <!-- personal settings -->
             <form v-on:submit.prevent="createTour()" action="#" method="post" class="sky-form boxed">
-              <header>My Information</header>
-
               <fieldset>
                 <div class="row">
                   <section class="col col-md-6">
                     <label class="label">Date</label>
                     <label class="input">
-                      <i class="icon-append fa fa-user"></i>
                       <input required type="date" class="form-control" v-model="newTourParams.date" />
                     </label>
                   </section>
@@ -64,8 +61,8 @@
               <footer>
                 <div>
                   <button type="submit" class="button">
-                    <i class="fa fa-check"></i>
-                    Save Changes
+                    <i class="fa fa-hand-peace-o"></i>
+                    Add Show
                   </button>
                 </div>
               </footer>

@@ -96,7 +96,7 @@
             </div>
             <router-link to="/images/new">
               <button type="button" class="btn btn-primary btn-sm" v-if="$parent.getUserId() == user.id">
-                Add Image
+                Add Housing Image
               </button>
             </router-link>
           </div>
