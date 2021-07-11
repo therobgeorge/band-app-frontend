@@ -177,12 +177,6 @@
                                   <label>Comment:</label>
                                   <input type="text" class="form-control" v-model="editTourParams.comment" />
                                 </div>
-                                <!-- <div class="form-group">
-                                  
-                                  <label>Tour ID:</label>
-                                  <input type="text" class="form-control" v-model="editTourParams.id" />
-                                </div> -->
-
                                 <input type="submit" class="btn btn-primary" value="Submit" />
                               </form>
                             </div>
@@ -190,6 +184,7 @@
                           </div>
                         </div>
                       </div>
+
                       <a href="#" class="btn default btn-xs bg-red white" v-on:click="destroyTour(tour)">
                         <i class="fa fa-times white"></i>
                         Delete

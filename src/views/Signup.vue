@@ -6,7 +6,8 @@
         <header>
           <h2>
             <!-- Page Title -->
-            Sign Up
+            <strong>Sign</strong>
+            Up
           </h2>
           <!-- /Page Title -->
         </header>
@@ -69,7 +70,7 @@
                 </section>
 
                 <section>
-                  <label class="input">
+                  <label class="textarea">
                     <textarea
                       class="form-control"
                       required
@@ -92,7 +93,7 @@
 
               <fieldset v-if="newUserParams.band == false">
                 <section>
-                  <label class="input">
+                  <label class="textarea">
                     <textarea
                       class="form-control"
                       required
@@ -105,7 +106,7 @@
                 </section>
 
                 <section>
-                  <label class="input">
+                  <label class="textarea">
                     <textarea
                       class="form-control"
                       required

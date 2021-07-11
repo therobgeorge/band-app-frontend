@@ -1,6 +1,128 @@
 <template>
   <div class="users-edit">
-    <span>
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            <strong>Edit</strong>
+            Profile
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- personal settings -->
+            <form v-on:submit.prevent="updateUser()" action="#" method="post" class="sky-form boxed">
+              <header>My Information</header>
+
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-6">
+                    <label class="label">Name</label>
+                    <label class="input">
+                      <i class="icon-append fa fa-user"></i>
+                      <input required type="text" v-model="editUserParams.name" />
+                      <b class="tooltip tooltip-bottom-right">Update Name</b>
+                    </label>
+                  </section>
+                  <section class="col col-md-6">
+                    <label class="label">Email</label>
+                    <label class="input">
+                      <i class="icon-append fa fa-envelope"></i>
+                      <input type="email" v-model="editUserParams.email" />
+                      <b class="tooltip tooltip-bottom-right">Valid email address</b>
+                    </label>
+                  </section>
+                </div>
+
+                <div class="row">
+                  <section class="col col-md-6">
+                    <label class="label">New Password</label>
+                    <label class="input">
+                      <i class="icon-append fa fa-lock"></i>
+                      <input type="password" v-model="editUserParams.password" />
+                      <b class="tooltip tooltip-bottom-right">Update Password</b>
+                    </label>
+                  </section>
+                  <section class="col col-md-6">
+                    <label class="label">Confirm New Password</label>
+                    <label class="input">
+                      <i class="icon-append fa fa-lock"></i>
+                      <input type="password" v-model="editUserParams.password_confirmation" />
+                      <b class="tooltip tooltip-bottom-right">Update Password</b>
+                    </label>
+                  </section>
+                </div>
+
+                <div class="row">
+                  <section class="col col-md-6">
+                    <label class="label">Profile Picture</label>
+                    <label class="input">
+                      <input type="file" v-on:change="setFile($event)" ref="fileInput" />
+                    </label>
+                  </section>
+                </div>
+                <br />
+                <div>
+                  <label class="label">Bio</label>
+                  <label class="textarea">
+                    <i class="icon-append fa fa-pencil-square-o"></i>
+                    <textarea v-model="editUserParams.bio" rows="3"></textarea>
+                    <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                  </label>
+                </div>
+                <div v-if="editUserParams.band == false">
+                  <div>
+                    <label class="label">Address</label>
+                    <label class="textarea">
+                      <i class="icon-append fa fa-pencil-square-o"></i>
+                      <textarea v-model="editUserParams.address" rows="3"></textarea>
+                      <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="label">Housing Description</label>
+                    <label class="textarea">
+                      <i class="icon-append fa fa-pencil-square-o"></i>
+                      <textarea v-model="editUserParams.accommodation_description" rows="3"></textarea>
+                      <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <footer>
+                <div>
+                  <button type="submit" class="button">
+                    <i class="fa fa-check"></i>
+                    Save Changes
+                  </button>
+                </div>
+                <div>
+                  <button v-on:click="destroyUser()" class="button">
+                    <i class="fa fa-trash"></i>
+                    Delete Profile
+                  </button>
+                </div>
+              </footer>
+            </form>
+            <!-- /personal settings -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /CONTENT -->
+
+    <!-- <span>
       <form v-on:submit.prevent="updateUser()">
         <h1>Edit User</h1>
         <img :src="editUserParams.profile_picture" alt="" />
@@ -46,7 +168,7 @@
         <input type="submit" class="btn btn-primary" value="Submit" />
         <button v-on:click="destroyUser()">Delete Profile</button>
       </form>
-    </span>
+    </span> -->
   </div>
 </template>
 

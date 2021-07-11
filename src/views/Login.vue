@@ -6,7 +6,7 @@
         <header>
           <h2>
             <!-- Page Title -->
-            Login
+            <strong>Login</strong>
           </h2>
           <!-- /Page Title -->
         </header>
