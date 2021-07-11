@@ -16,7 +16,7 @@
 
     <!-- CONTENT -->
     <div class="container">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <section v-if="currentUser.band == true">
           <ul
             class="comment list-unstyled"
@@ -27,10 +27,10 @@
               <!-- avatar -->
               <router-link :to="`/conversations/${conversation.id}`">
                 <img
-                  class="thumbnail rounded"
+                  class="avatar rounded"
                   :src="conversation.host.profile_picture"
-                  width="25"
-                  height="25"
+                  width="50"
+                  height="50"
                   alt="avatar"
                 />
               </router-link>
@@ -41,6 +41,41 @@
                   <small class="text-muted pull-right">{{ fromNowDate(conversation.last_message.created_at) }}</small>
                   <router-link :to="`/conversations/${conversation.id}`">
                     <span>{{ conversation.host.name }}</span>
+                  </router-link>
+                </a>
+                <p>
+                  {{ conversation.last_message.body }}
+                </p>
+              </div>
+              <!-- /comment body -->
+            </li>
+            <hr />
+          </ul>
+        </section>
+        <section v-if="currentUser.band == false">
+          <ul
+            class="comment list-unstyled"
+            v-for="conversation in orderBy(conversations, 'last_message.created_at', -1)"
+            v-bind:key="conversation.id"
+          >
+            <li class="comment">
+              <!-- avatar -->
+              <router-link :to="`/conversations/${conversation.id}`">
+                <img
+                  class="avatar rounded"
+                  :src="conversation.band.profile_picture"
+                  width="50"
+                  height="50"
+                  alt="avatar"
+                />
+              </router-link>
+
+              <!-- comment body -->
+              <div class="comment-body">
+                <a href="#" class="comment-author">
+                  <small class="text-muted pull-right">{{ fromNowDate(conversation.last_message.created_at) }}</small>
+                  <router-link :to="`/conversations/${conversation.id}`">
+                    <span>{{ conversation.band.name }}</span>
                   </router-link>
                 </a>
                 <p>

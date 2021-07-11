@@ -1,7 +1,82 @@
 <template>
   <div class="conversation-show">
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            <strong>Messages</strong>
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <div class="container">
+      <div class="col-md-6">
+        <section>
+          <div class="panel panel-light margin-bottom60">
+            <div class="panel-body">
+              <ul class="comment list-unstyled" v-for="message in conversation.messages" v-bind:key="message.id">
+                <li class="comment">
+                  <!-- avatar -->
+                  <router-link :to="`/users/${message.user.id}`">
+                    <img
+                      class="avatar rounded"
+                      :src="message.user.profile_picture"
+                      width="50"
+                      height="50"
+                      alt="avatar"
+                    />
+                  </router-link>
+
+                  <!-- comment body -->
+                  <div class="comment-body">
+                    <a href="#" class="comment-author">
+                      <small class="text-muted pull-right">{{ fromNowDate(message.created_at) }}</small>
+                      <router-link :to="`/users/${message.user.id}`">
+                        <span>{{ message.user.name }}</span>
+                      </router-link>
+                    </a>
+                    <p>
+                      {{ message.body }}
+                    </p>
+                  </div>
+                  <!-- /comment body -->
+                </li>
+                <hr />
+              </ul>
+            </div>
+            <div class="panel-body">
+              <form v-on:submit.prevent="createMessage()" class="sky-form">
+                <fieldset>
+                  <section>
+                    <label class="textarea">
+                      <i class="icon-append fa fa-comment"></i>
+                      <textarea rows="3" placeholder="Send Message"></textarea>
+                    </label>
+                  </section>
+                </fieldset>
+
+                <footer>
+                  <button type="submit" class="button">
+                    <i class="fa fa-send"></i>
+                    Send Message
+                  </button>
+                </footer>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- /CONTENT -->
+
     <!-- <h3>Conversation with: {{ conversation.}}</h3> -->
-    <div v-for="message in conversation.messages" v-bind:key="message.id">
+    <!-- <div v-for="message in conversation.messages" v-bind:key="message.id">
       <router-link :to="`/users/${message.user.id}`">
         <p>{{ message.user.name }}</p>
       </router-link>
@@ -21,7 +96,7 @@
         </div>
         <input type="submit" class="btn btn-primary" value="Send Message" />
       </form>
-    </span>
+    </span> -->
   </div>
 </template>
 
@@ -30,6 +105,7 @@
 <script>
 import axios from "axios";
 import ActionCable from "actioncable";
+import moment from "moment";
 export default {
   data: function () {
     return {
@@ -88,6 +164,9 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+    },
+    fromNowDate: function (date) {
+      return moment(date).fromNow();
     },
   },
 };
