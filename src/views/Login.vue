@@ -22,8 +22,6 @@
           <div class="col-md-6 col-sm-6">
             <!-- login form -->
             <form v-on:submit.prevent="submit()" action="#" method="post" class="sky-form boxed">
-              <header>I'm a returning customer</header>
-
               <fieldset>
                 <section>
                   <label class="input">

@@ -94,6 +94,11 @@
                 </div>
               </div>
             </div>
+            <router-link to="/images/new">
+              <button type="button" class="btn btn-primary btn-sm" v-if="$parent.getUserId() == user.id">
+                Add Image
+              </button>
+            </router-link>
           </div>
         </div>
         <!-- /STANDARD BUTTONS -->
@@ -104,7 +109,7 @@
         <!-- STANDARD BUTTONS -->
         <div v-if="user.band == true" class="panel panel-light margin-bottom60">
           <div class="panel-heading">
-            <h3 class="panel-title">Tours</h3>
+            <h3 class="panel-title">Upcoming Shows</h3>
           </div>
 
           <div class="panel-body">

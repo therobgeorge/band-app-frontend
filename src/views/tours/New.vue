@@ -6,8 +6,8 @@
         <header>
           <h2>
             <!-- Page Title -->
-            <strong>Edit</strong>
-            Profile
+            <strong>Add</strong>
+            A Show
           </h2>
           <!-- /Page Title -->
         </header>
@@ -30,7 +30,7 @@
                     <label class="label">Date</label>
                     <label class="input">
                       <i class="icon-append fa fa-user"></i>
-                      <input required type="date" v-model="newTourParams.date" />
+                      <input required type="date" class="form-control" v-model="newTourParams.date" />
                     </label>
                   </section>
                 </div>

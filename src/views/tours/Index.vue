@@ -1,6 +1,53 @@
 <template>
   <div class="tours-index">
-    <h1>Tours</h1>
+    <!-- PAGE TOP -->
+    <section class="page-title">
+      <div class="container">
+        <header>
+          <h2>
+            <!-- Page Title -->
+            <strong>Upcoming</strong>
+            Shows
+          </h2>
+          <!-- /Page Title -->
+        </header>
+      </div>
+    </section>
+    <!-- /PAGE TOP -->
+
+    <!-- CONTENT -->
+    <section>
+      <div class="panel panel-light margin-bottom60">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Band</th>
+                  <th>Date</th>
+                  <th>Location</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
+                  <td v-if="tour.distance < 50">
+                    <img class="thumnail rounded" :src="tour.user.profile_picture" alt="" height="50" />
+                    <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
+                  </td>
+                  <td v-if="tour.distance < 50">{{ formatDate(tour.date) }}</td>
+                  <td v-if="tour.distance < 50">{{ tour.location }}</td>
+                  <td v-if="tour.distance < 50">{{ tour.comment }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /CONTENT -->
+
+    <!-- <h1>Tours</h1>
     <div>
       <table>
         <tr>
@@ -18,12 +65,11 @@
             <td>{{ formatDate(tour.date) }}</td>
             <td>{{ tour.location }}</td>
             <td>{{ tour.comment }}</td>
-            <!-- need to add link once conversation and message pages are complete -->
             <td><button v-on:click="createConversation(tour)">Message</button></td>
           </span>
         </tr>
       </table>
-    </div>
+    </div> -->
   </div>
 </template>
 
