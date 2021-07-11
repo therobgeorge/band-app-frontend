@@ -56,7 +56,7 @@
                   <section>
                     <label class="textarea">
                       <i class="icon-append fa fa-comment"></i>
-                      <textarea rows="3" placeholder="Send Message"></textarea>
+                      <textarea v-model="newMessageParams.body" rows="3" placeholder="Send Message"></textarea>
                     </label>
                   </section>
                 </fieldset>

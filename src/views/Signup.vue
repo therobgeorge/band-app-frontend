@@ -23,24 +23,28 @@
           <div class="col-md-6 col-sm-6">
             <!-- registration form -->
             <form v-on:submit.prevent="submit()" action="#" method="post" class="sky-form boxed">
-              <header>Register an account</header>
+              <header>Your Info</header>
 
               <fieldset>
                 <section>
+                  <label>Name:</label>
                   <label class="input">
+                    <i class="icon-append fa fa-user"></i>
                     <input required type="text" v-model="newUserParams.name" placeholder="Full Name or Band Name" />
                     <b class="tooltip tooltip-bottom-right">Please enter a name.</b>
                   </label>
                 </section>
 
                 <section>
+                  <label>Profile Picture:</label>
                   <label class="input">
-                    <label>Profile Picture:</label>
+                    <i class="icon-append fa fa-photo"></i>
                     <input type="file" v-on:change="setFile($event)" ref="fileInput" />
                   </label>
                 </section>
 
                 <section>
+                  <label>Email:</label>
                   <label class="input">
                     <i class="icon-append fa fa-envelope"></i>
                     <input required type="email" v-model="newUserParams.email" placeholder="Email address" />
@@ -49,6 +53,7 @@
                 </section>
 
                 <section>
+                  <label>Password:</label>
                   <label class="input">
                     <i class="icon-append fa fa-lock"></i>
                     <input required type="password" v-model="newUserParams.password" placeholder="Password" />
@@ -57,6 +62,7 @@
                 </section>
 
                 <section>
+                  <label>Password Confirmation:</label>
                   <label class="input">
                     <i class="icon-append fa fa-lock"></i>
                     <input
@@ -70,7 +76,9 @@
                 </section>
 
                 <section>
+                  Bio:
                   <label class="textarea">
+                    <i class="icon-append fa fa-book"></i>
                     <textarea
                       class="form-control"
                       required
@@ -93,7 +101,9 @@
 
               <fieldset v-if="newUserParams.band == false">
                 <section>
+                  <label>Address:</label>
                   <label class="textarea">
+                    <i class="icon-append fa fa-map-pin"></i>
                     <textarea
                       class="form-control"
                       required
@@ -106,7 +116,9 @@
                 </section>
 
                 <section>
+                  <label>Housing Description:</label>
                   <label class="textarea">
+                    <i class="icon-append fa fa-home"></i>
                     <textarea
                       class="form-control"
                       required
@@ -114,12 +126,15 @@
                       rows="10"
                       placeholder="Housing Description: (i.e., I have one spare room with a bed, and a living room with a couch."
                     ></textarea>
-                    <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
+                    <b class="tooltip tooltip-bottom-right">Please enter a housing description.</b>
                   </label>
                 </section>
               </fieldset>
               <footer>
-                <button type="submit" class="button" value="Submit">Submit</button>
+                <button type="submit" class="button" value="Submit">
+                  <i class="fa fa-pencil-square-o"></i>
+                  Sign Up
+                </button>
               </footer>
             </form>
             <!-- /registration form -->
@@ -227,7 +242,7 @@ export default {
       formData.append("bio", this.newUserParams.bio);
       formData.append("band", this.newUserParams.band);
       formData.append("address", this.newUserParams.address);
-      formData.append("acommodation_description", this.newUserParams.acommodation_description);
+      formData.append("accommodation_description", this.newUserParams.accommodation_description);
       formData.append("profile_picture", this.profile_picture);
       axios
         .post("/users", formData)

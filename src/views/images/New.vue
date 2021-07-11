@@ -26,6 +26,7 @@
                 <div class="row">
                   <section class="col col-md-6">
                     <label class="input">
+                      <i class="icon-append fa fa-photo"></i>
                       <input type="file" v-on:change="setFile($event)" ref="fileInput" class="form-control" />
                     </label>
                   </section>

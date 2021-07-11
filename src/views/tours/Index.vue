@@ -38,6 +38,12 @@
                   <td v-if="tour.distance < 50">{{ formatDate(tour.date) }}</td>
                   <td v-if="tour.distance < 50">{{ tour.location }}</td>
                   <td v-if="tour.distance < 50">{{ tour.comment }}</td>
+                  <td v-if="tour.distance < 50">
+                    <button v-on:click="createConversation(tour)" type="button" class="btn btn-xs btn-primary">
+                      <i class="fa fa-envelope"></i>
+                      Message
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>

@@ -77,7 +77,7 @@
                   <label class="textarea">
                     <i class="icon-append fa fa-pencil-square-o"></i>
                     <textarea v-model="editUserParams.bio" rows="3"></textarea>
-                    <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                    <b class="tooltip tooltip-bottom-right">Please enter a bio.</b>
                   </label>
                 </div>
                 <div v-if="editUserParams.band == false">
@@ -86,7 +86,7 @@
                     <label class="textarea">
                       <i class="icon-append fa fa-pencil-square-o"></i>
                       <textarea v-model="editUserParams.address" rows="3"></textarea>
-                      <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                      <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
                     </label>
                   </div>
                   <div>
@@ -94,7 +94,7 @@
                     <label class="textarea">
                       <i class="icon-append fa fa-pencil-square-o"></i>
                       <textarea v-model="editUserParams.accommodation_description" rows="3"></textarea>
-                      <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                      <b class="tooltip tooltip-bottom-right">Please enter a housing description.</b>
                     </label>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default {
       formData.append("password_confirmation", this.editUserParams.password_confirmation);
       formData.append("bio", this.editUserParams.bio);
       formData.append("address", this.editUserParams.address);
-      formData.append("acommodation_description", this.editUserParams.acommodation_description);
+      formData.append("accommodation_description", this.editUserParams.accommodation_description);
       if (this.profile_picture != "") {
         formData.append("profile_picture", this.profile_picture);
       }
