@@ -11,10 +11,7 @@
       <div class="container">
         <article class="row">
           <div class="col-md-6">
-            <div
-              class="owl-carousel controlls-over"
-              data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "transitionStyle":"fadeUp"}'
-            >
+            <div>
               <div>
                 <img class="img-responsive" :src="user.profile_picture" width="555" height="311" alt="" />
               </div>
