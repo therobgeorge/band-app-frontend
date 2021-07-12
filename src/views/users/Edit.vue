@@ -75,7 +75,7 @@
                 <div>
                   <label class="label">Bio</label>
                   <label class="textarea">
-                    <i class="icon-append fa fa-pencil-square-o"></i>
+                    <i class="icon-append fa fa-book"></i>
                     <textarea v-model="editUserParams.bio" rows="3"></textarea>
                     <b class="tooltip tooltip-bottom-right">Please enter a bio.</b>
                   </label>
@@ -84,7 +84,7 @@
                   <div>
                     <label class="label">Address</label>
                     <label class="textarea">
-                      <i class="icon-append fa fa-pencil-square-o"></i>
+                      <i class="icon-append fa fa-map-pin"></i>
                       <textarea v-model="editUserParams.address" rows="3"></textarea>
                       <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
                     </label>
@@ -92,7 +92,7 @@
                   <div>
                     <label class="label">Housing Description</label>
                     <label class="textarea">
-                      <i class="icon-append fa fa-pencil-square-o"></i>
+                      <i class="icon-append fa fa-home"></i>
                       <textarea v-model="editUserParams.accommodation_description" rows="3"></textarea>
                       <b class="tooltip tooltip-bottom-right">Please enter a housing description.</b>
                     </label>

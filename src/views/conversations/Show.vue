@@ -159,7 +159,7 @@ export default {
         .post("/messages", params)
         .then((response) => {
           console.log(response.data);
-          this.newMessageParams = "";
+          this.newMessageParams = {};
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
