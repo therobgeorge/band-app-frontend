@@ -52,7 +52,6 @@
                       <input type="password" v-model="editUserParams.password" />
                       <b class="tooltip tooltip-bottom-right">Update Password</b>
                     </label>
-                    {{ editUserParams }}
                   </section>
                   <section class="col col-md-6">
                     <label class="label">Confirm New Password</label>

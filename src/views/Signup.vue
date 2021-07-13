@@ -27,7 +27,7 @@
 
               <fieldset>
                 <section>
-                  <label>Name:</label>
+                  <label>Name</label>
                   <label class="input">
                     <i class="icon-append fa fa-user"></i>
                     <input required type="text" v-model="newUserParams.name" placeholder="Full Name or Band Name" />
@@ -36,7 +36,7 @@
                 </section>
 
                 <section>
-                  <label>Profile Picture:</label>
+                  <label>Profile Picture</label>
                   <label class="input">
                     <i class="icon-append fa fa-photo"></i>
                     <input type="file" v-on:change="setFile($event)" ref="fileInput" />
@@ -44,7 +44,7 @@
                 </section>
 
                 <section>
-                  <label>Email:</label>
+                  <label>Email</label>
                   <label class="input">
                     <i class="icon-append fa fa-envelope"></i>
                     <input required type="email" v-model="newUserParams.email" placeholder="Email address" />
@@ -53,7 +53,7 @@
                 </section>
 
                 <section>
-                  <label>Password:</label>
+                  <label>Password</label>
                   <label class="input">
                     <i class="icon-append fa fa-lock"></i>
                     <input required type="password" v-model="newUserParams.password" placeholder="Password" />
@@ -62,7 +62,7 @@
                 </section>
 
                 <section>
-                  <label>Password Confirmation:</label>
+                  <label>Password Confirmation</label>
                   <label class="input">
                     <i class="icon-append fa fa-lock"></i>
                     <input
@@ -76,7 +76,7 @@
                 </section>
 
                 <section>
-                  Bio:
+                  Bio
                   <label class="textarea">
                     <i class="icon-append fa fa-book"></i>
                     <textarea
@@ -101,7 +101,7 @@
 
               <fieldset v-if="newUserParams.band == false">
                 <section>
-                  <label>Address:</label>
+                  <label>Address</label>
                   <label class="textarea">
                     <i class="icon-append fa fa-map-pin"></i>
                     <textarea
@@ -116,7 +116,7 @@
                 </section>
 
                 <section>
-                  <label>Housing Description:</label>
+                  <label>Housing Description</label>
                   <label class="textarea">
                     <i class="icon-append fa fa-home"></i>
                     <textarea

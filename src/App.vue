@@ -51,7 +51,7 @@
                 </li>
                 <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="/tours">
-                    Tours
+                    Shows
                     <span>_____</span>
                   </router-link>
                 </li>

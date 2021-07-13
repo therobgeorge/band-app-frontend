@@ -143,21 +143,20 @@
                             <div class="modal-header">
                               <!-- modal header -->
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                              <h4 class="modal-title" id="editTourLabel">Edit Tour Date</h4>
+                              <h4 class="modal-title" id="editTourLabel">Edit Show</h4>
                             </div>
                             <!-- /modal header -->
 
                             <!-- modal body -->
                             <div class="modal-body">
                               <form v-on:submit.prevent="updateTour()">
-                                <h1>Edit Tour</h1>
                                 <ul>
                                   <li class="text-danger" v-for="error in errors" v-bind:key="error">
                                     {{ error }}
                                   </li>
                                 </ul>
                                 <div class="form-group">
-                                  <label>Date:</label>
+                                  <label>Date</label>
                                   <input
                                     type="date"
                                     class="form-control"
@@ -166,11 +165,11 @@
                                   />
                                 </div>
                                 <div class="form-group">
-                                  <label>Location:</label>
+                                  <label>Location</label>
                                   <input type="text" class="form-control" v-model="editTourParams.location" />
                                 </div>
                                 <div class="form-group">
-                                  <label>Comment:</label>
+                                  <label>Comment</label>
                                   <input type="text" class="form-control" v-model="editTourParams.comment" />
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Submit" />
