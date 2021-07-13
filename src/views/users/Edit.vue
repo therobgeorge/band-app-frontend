@@ -52,6 +52,7 @@
                       <input type="password" v-model="editUserParams.password" />
                       <b class="tooltip tooltip-bottom-right">Update Password</b>
                     </label>
+                    {{ editUserParams }}
                   </section>
                   <section class="col col-md-6">
                     <label class="label">Confirm New Password</label>
@@ -200,8 +201,10 @@ export default {
       var formData = new FormData();
       formData.append("name", this.editUserParams.name);
       formData.append("email", this.editUserParams.email);
-      formData.append("password", this.editUserParams.password);
-      formData.append("password_confirmation", this.editUserParams.password_confirmation);
+      if (this.editUserParams.password && this.editUserParams.password_confirmation) {
+        formData.append("password", this.editUserParams.password);
+        formData.append("password_confirmation", this.editUserParams.password_confirmation);
+      }
       formData.append("bio", this.editUserParams.bio);
       formData.append("address", this.editUserParams.address);
       formData.append("accommodation_description", this.editUserParams.accommodation_description);

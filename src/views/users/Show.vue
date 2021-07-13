@@ -50,47 +50,41 @@
           <div class="panel-body">
             <p>{{ user.accommodation_description }}</p>
 
-            <div
-              class="owl-carousel controlls-over owl-theme owl-carousel-init"
-              data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": false, "transitionStyle":"fadeUp"}'
-              style="opacity: 1; display: block"
-            >
-              <!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
-              <div class="owl-wrapper-outer autoHeight" style="height: 476px">
-                <div
-                  class="owl-wrapper"
-                  style="
-                    width: 3392px;
-                    left: 0px;
-                    display: block;
-                    transition: all 0ms ease 0s;
-                    transform: translate3d(-848px, 0px, 0px);
-                    transform-origin: 1272px center;
-                    perspective-origin: 1272px center;
-                  "
-                >
-                  <div class="owl-item" style="width: 848px">
-                    <div v-for="image in user.images" v-bind:key="image.id">
-                      <div>
-                        <img alt="" class="img-responsive" :src="image.url" />
-                      </div>
-                    </div>
+            <div class="col-md-9">
+              <ul
+                class="lightbox nomargin-left list-unstyled"
+                data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'
+              >
+                <li v-for="image in user.images" v-bind:key="image.id" class="col-md-4 nomargin-left">
+                  <!-- item -->
+                  <div class="item-box">
+                    <figure>
+                      <a class="item-hover" :href="image.url">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                          <strong>VIEW</strong>
+                          IMAGE
+                        </span>
+                      </a>
+                      <img class="img-responsive" :src="image.url" width="260" height="260" alt="" />
+                    </figure>
                   </div>
-                  <!-- <div class="owl-item" style="width: 848px">
-                    <div>
-                      <img alt="" class="img-responsive" src="assets/images/demo/about_2.jpg" />
-                    </div>
-                  </div> -->
-                </div>
-              </div>
+                  <button
+                    class="btn btn-primary btn-xs"
+                    style="text-center"
+                    v-if="$parent.getUserId() == user.id"
+                    v-on:click="destroyImage(image)"
+                  >
+                    Delete
+                  </button>
+                </li>
+              </ul>
 
-              <div class="owl-controls clickable">
-                <div class="owl-buttons">
-                  <div class="owl-prev"><i class="fa fa-chevron-left"></i></div>
-                  <div class="owl-next"><i class="fa fa-chevron-right"></i></div>
-                </div>
-              </div>
+              <div class="clearfix"></div>
+
+              <!-- /CENTER -->
             </div>
+
             <router-link to="/images/new">
               <button type="button" class="btn btn-primary btn-sm" v-if="$parent.getUserId() == user.id">
                 Add Housing Image
