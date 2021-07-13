@@ -20,7 +20,30 @@
         <section>
           <div class="panel panel-light margin-bottom60">
             <div class="panel-body">
-              <ul class="comment list-unstyled" v-for="message in conversation.messages" v-bind:key="message.id">
+              <form v-on:submit.prevent="createMessage()" class="sky-form">
+                <fieldset>
+                  <section>
+                    <label class="textarea">
+                      <i class="icon-append fa fa-comment"></i>
+                      <textarea v-model="newMessageParams.body" rows="3" placeholder="Message..."></textarea>
+                    </label>
+                  </section>
+                </fieldset>
+
+                <footer>
+                  <button type="submit" class="button">
+                    <i class="fa fa-send"></i>
+                    Send Message
+                  </button>
+                </footer>
+              </form>
+            </div>
+            <div class="panel-body">
+              <ul
+                class="comment list-unstyled"
+                v-for="message in orderBy(conversation.messages, 'created_at', -1)"
+                v-bind:key="message.id"
+              >
                 <li class="comment">
                   <!-- avatar -->
                   <router-link :to="`/users/${message.user.id}`">
@@ -49,25 +72,6 @@
                 </li>
                 <hr />
               </ul>
-            </div>
-            <div class="panel-body">
-              <form v-on:submit.prevent="createMessage()" class="sky-form">
-                <fieldset>
-                  <section>
-                    <label class="textarea">
-                      <i class="icon-append fa fa-comment"></i>
-                      <textarea v-model="newMessageParams.body" rows="3" placeholder="Message..."></textarea>
-                    </label>
-                  </section>
-                </fieldset>
-
-                <footer>
-                  <button type="submit" class="button">
-                    <i class="fa fa-send"></i>
-                    Send Message
-                  </button>
-                </footer>
-              </form>
             </div>
           </div>
         </section>
@@ -106,7 +110,9 @@
 import axios from "axios";
 import ActionCable from "actioncable";
 import moment from "moment";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       conversation: {},
@@ -133,7 +139,7 @@ export default {
       received: (data) => {
         // Called when there's incoming data on the websocket for this channel
         console.log("Data from MessagesChannel:", data);
-        this.conversation.messages.push(data); // update the messages in real time
+        this.conversation.messages.unshift(data); // update the messages in real time
       },
     });
     if (localStorage.user_id) {
