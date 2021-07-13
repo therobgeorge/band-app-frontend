@@ -131,7 +131,7 @@
                 </section>
               </fieldset>
               <footer>
-                <button type="submit" class="button" value="Submit">
+                <button type="submit" class="button" value="Submit" style="margin: 10px 16px">
                   <i class="fa fa-pencil-square-o"></i>
                   Sign Up
                 </button>

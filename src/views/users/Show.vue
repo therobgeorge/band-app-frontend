@@ -71,7 +71,7 @@
                   </div>
                   <button
                     class="btn btn-primary btn-xs"
-                    style="text-center"
+                    style="margin: auto"
                     v-if="$parent.getUserId() == user.id"
                     v-on:click="destroyImage(image)"
                   >
@@ -125,6 +125,7 @@
                         data-toggle="modal"
                         data-target="#editTour"
                         v-on:click="setEditTour(tour)"
+                        style=""
                       >
                         <i class="fa fa-edit white"></i>
                         Edit

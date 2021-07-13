@@ -100,19 +100,21 @@
                 </div>
               </fieldset>
 
-              <footer>
-                <div>
-                  <button type="submit" class="button">
-                    <i class="fa fa-check"></i>
-                    Save Changes
-                  </button>
-                </div>
-                <div>
-                  <button v-on:click="destroyUser()" class="button">
-                    <i class="fa fa-trash"></i>
-                    Delete Profile
-                  </button>
-                </div>
+              <footer style="margin: 10px 16px">
+                <section>
+                  <div>
+                    <button type="submit" class="button">
+                      <i class="fa fa-check"></i>
+                      Save Changes
+                    </button>
+                  </div>
+                  <div>
+                    <button v-on:click="destroyUser()" class="button">
+                      <i class="fa fa-trash"></i>
+                      Delete Profile
+                    </button>
+                  </div>
+                </section>
               </footer>
             </form>
             <!-- /personal settings -->

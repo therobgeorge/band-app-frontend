@@ -40,7 +40,7 @@
                 </section>
               </fieldset>
               <footer>
-                <button type="submit" class="button" value="Submit">Log in</button>
+                <button type="submit" class="button" value="Submit" style="margin: 10px 16px">Log in</button>
               </footer>
             </form>
             <!-- /login form -->
