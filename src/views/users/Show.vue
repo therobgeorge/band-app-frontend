@@ -124,8 +124,8 @@
                         class="btn default btn-xs bg-gray white"
                         data-toggle="modal"
                         data-target="#editTour"
+                        style="margin: 0px 8px"
                         v-on:click="setEditTour(tour)"
-                        style=""
                       >
                         <i class="fa fa-edit white"></i>
                         Edit
@@ -181,7 +181,12 @@
                         </div>
                       </div>
 
-                      <a href="#" class="btn default btn-xs bg-red white" v-on:click="destroyTour(tour)">
+                      <a
+                        href="#"
+                        class="btn default btn-xs bg-red white"
+                        v-on:click="destroyTour(tour)"
+                        style="margin: 0px 8px"
+                      >
                         <i class="fa fa-times white"></i>
                         Delete
                       </a>

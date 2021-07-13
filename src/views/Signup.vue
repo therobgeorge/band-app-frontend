@@ -23,8 +23,6 @@
           <div class="col-md-6 col-sm-6">
             <!-- registration form -->
             <form v-on:submit.prevent="submit()" action="#" method="post" class="sky-form boxed">
-              <header>Your Info</header>
-
               <fieldset>
                 <section>
                   <label>Name</label>
@@ -47,7 +45,7 @@
                   <label>Email</label>
                   <label class="input">
                     <i class="icon-append fa fa-envelope"></i>
-                    <input required type="email" v-model="newUserParams.email" placeholder="Email address" />
+                    <input required type="email" v-model="newUserParams.email" placeholder="Email Address" />
                     <b class="tooltip tooltip-bottom-right">Please enter an email address.</b>
                   </label>
                 </section>
@@ -69,7 +67,7 @@
                       required
                       type="password"
                       v-model="newUserParams.password_confirmation"
-                      placeholder="Confirm password"
+                      placeholder="Confirm Password"
                     />
                     <b class="tooltip tooltip-bottom-right">Please enter a password.</b>
                   </label>

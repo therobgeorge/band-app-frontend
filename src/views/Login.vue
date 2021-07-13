@@ -26,8 +26,8 @@
                 <section>
                   <label class="input">
                     <i class="icon-append fa fa-envelope"></i>
-                    <input required type="email" placeholder="Email address" v-model="email" />
-                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                    <input required type="email" placeholder="Email Address" v-model="email" />
+                    <b class="tooltip tooltip-bottom-right">Please enter an email address.</b>
                   </label>
                 </section>
 
@@ -35,7 +35,7 @@
                   <label class="input">
                     <i class="icon-append fa fa-lock"></i>
                     <input required type="password" placeholder="Password" v-model="password" />
-                    <b class="tooltip tooltip-bottom-right">Enter password</b>
+                    <b class="tooltip tooltip-bottom-right">Please enter a password.</b>
                   </label>
                 </section>
               </fieldset>

@@ -19,28 +19,34 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <!-- personal settings -->
             <form v-on:submit.prevent="createImage()" action="#" method="post" class="sky-form boxed">
               <fieldset>
                 <div class="row">
                   <section class="col col-md-6">
-                    <label class="input">
+                    <label class="input" style="margin: 10px 0px">
                       <i class="icon-append fa fa-photo"></i>
                       <input type="file" v-on:change="setFile($event)" ref="fileInput" class="form-control" />
                     </label>
                   </section>
+                  <section>
+                    <button type="submit" value="Submit" class="button" style="margin: 10px 16px">
+                      <i class="fa fa-home"></i>
+                      Add Image
+                    </button>
+                  </section>
                 </div>
               </fieldset>
 
-              <footer>
+              <!-- <footer>
                 <div>
                   <button type="submit" value="Submit" class="button">
                     <i class="fa fa-home"></i>
                     Add Image
                   </button>
                 </div>
-              </footer>
+              </footer> -->
             </form>
             <!-- /personal settings -->
           </div>

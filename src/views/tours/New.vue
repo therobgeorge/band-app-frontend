@@ -19,12 +19,12 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-5">
             <!-- personal settings -->
             <form v-on:submit.prevent="createTour()" action="#" method="post" class="sky-form boxed">
               <fieldset>
                 <div class="row">
-                  <section class="col col-md-6">
+                  <section class="col col-md-9">
                     <label class="label">Date</label>
                     <label class="input">
                       <input required type="date" class="form-control" v-model="newTourParams.date" />
@@ -32,7 +32,7 @@
                   </section>
                 </div>
                 <div class="row">
-                  <section class="col col-md-6">
+                  <section class="col col-md-9">
                     <label class="label">Location</label>
                     <label class="input">
                       <i class="icon-append fa fa-map-pin"></i>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="row">
-                  <section class="col col-md-6">
+                  <section class="col col-md-9">
                     <label class="label">Comment</label>
                     <label class="input">
                       <i class="icon-append fa fa-commenting"></i>
@@ -58,7 +58,7 @@
                 </div>
               </fieldset>
 
-              <footer>
+              <footer style="margin: 0px 16px 16px">
                 <div>
                   <button type="submit" class="button">
                     <i class="fa fa-hand-peace-o"></i>

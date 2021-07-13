@@ -32,7 +32,13 @@
               <tbody>
                 <tr v-for="tour in orderBy(futureTours, 'date')" v-bind:key="tour.id">
                   <td v-if="tour.distance < 50">
-                    <img class="thumnail rounded" :src="tour.user.profile_picture" alt="" height="50" />
+                    <img
+                      class="thumnail rounded"
+                      :src="tour.user.profile_picture"
+                      alt=""
+                      height="50"
+                      style="margin: 0px 8px"
+                    />
                     <router-link :to="`/users/${tour.user.id}`">{{ tour.user.name }}</router-link>
                   </td>
                   <td v-if="tour.distance < 50">{{ formatDate(tour.date) }}</td>

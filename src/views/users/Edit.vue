@@ -22,8 +22,6 @@
           <div class="col-md-8">
             <!-- personal settings -->
             <form v-on:submit.prevent="updateUser()" action="#" method="post" class="sky-form boxed">
-              <header>My Information</header>
-
               <fieldset>
                 <div class="row">
                   <section class="col col-md-6">
@@ -39,7 +37,7 @@
                     <label class="input">
                       <i class="icon-append fa fa-envelope"></i>
                       <input type="email" v-model="editUserParams.email" />
-                      <b class="tooltip tooltip-bottom-right">Valid email address</b>
+                      <b class="tooltip tooltip-bottom-right">Update Email Address</b>
                     </label>
                   </section>
                 </div>
@@ -77,7 +75,7 @@
                   <label class="textarea">
                     <i class="icon-append fa fa-book"></i>
                     <textarea v-model="editUserParams.bio" rows="3"></textarea>
-                    <b class="tooltip tooltip-bottom-right">Please enter a bio.</b>
+                    <b class="tooltip tooltip-bottom-right">Update Bio</b>
                   </label>
                 </div>
                 <div v-if="editUserParams.band == false">
@@ -86,7 +84,7 @@
                     <label class="textarea">
                       <i class="icon-append fa fa-map-pin"></i>
                       <textarea v-model="editUserParams.address" rows="3"></textarea>
-                      <b class="tooltip tooltip-bottom-right">Please enter an address.</b>
+                      <b class="tooltip tooltip-bottom-right">Update Address</b>
                     </label>
                   </div>
                   <div>
@@ -94,7 +92,7 @@
                     <label class="textarea">
                       <i class="icon-append fa fa-home"></i>
                       <textarea v-model="editUserParams.accommodation_description" rows="3"></textarea>
-                      <b class="tooltip tooltip-bottom-right">Please enter a housing description.</b>
+                      <b class="tooltip tooltip-bottom-right">Update Housing Description</b>
                     </label>
                   </div>
                 </div>
