@@ -38,62 +38,38 @@
       </div>
       <!-- /.container -->
 
-      <div class="col-md-9">
-        <!-- CENTER -->
+      <!-- MY WORK -->
+      <div class="container" v-if="user.band == false">
+        <h3>
+          MY
+          <strong style="margin-right: 10px">Space</strong>
 
-        <!-- STANDARD BUTTONS -->
-        <div v-if="user.band == false" class="panel panel-light margin-bottom60">
-          <div class="panel-heading">
-            <h3 class="panel-title">My Space</h3>
-          </div>
+          <router-link to="/images/new">
+            <i class="fa-hover fa fa-plus-circle"></i>
+          </router-link>
+        </h3>
 
-          <div class="panel-body">
-            <p>{{ user.accommodation_description }}</p>
+        <p>{{ user.accommodation_description }}</p>
 
-            <div class="col-md-9">
-              <ul
-                class="lightbox nomargin-left list-unstyled"
-                data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'
-              >
-                <li v-for="image in user.images" v-bind:key="image.id" class="col-md-4 nomargin-left">
-                  <!-- item -->
-                  <div class="item-box">
-                    <figure>
-                      <a class="item-hover" :href="image.url">
-                        <span class="overlay color2"></span>
-                        <span class="inner">
-                          <strong>VIEW</strong>
-                          IMAGE
-                        </span>
-                      </a>
-                      <img class="img-responsive" :src="image.url" width="260" height="260" alt="" />
-                    </figure>
-                  </div>
-                  <button
-                    class="btn btn-primary btn-xs"
-                    style="margin: auto"
-                    v-if="$parent.getUserId() == user.id"
-                    v-on:click="destroyImage(image)"
-                  >
-                    Delete
-                  </button>
-                </li>
-              </ul>
-
-              <div class="clearfix"></div>
-
-              <!-- /CENTER -->
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-xs-6" v-for="image in user.images" v-bind:key="image.id">
+            <div class="box-content thumbnail text-center">
+              <a :href="image.url" class="item-image">
+                <img class="img-responsive" :src="image.url" alt="" />
+              </a>
             </div>
-
-            <router-link to="/images/new">
-              <button type="button" class="btn btn-primary btn-sm" v-if="$parent.getUserId() == user.id">
-                Add Housing Image
-              </button>
-            </router-link>
+            <h3>
+              <span v-if="$parent.getUserId() == user.id">
+                <button class="fa-hover">
+                  <i class="fa-hover fa fa-trash" v-on:click="destroyImage(image)"></i>
+                </button>
+              </span>
+            </h3>
           </div>
         </div>
-        <!-- /STANDARD BUTTONS -->
       </div>
+      <!-- /MY WORK -->
+
       <div class="col-md-9">
         <!-- CENTER -->
 
