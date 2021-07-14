@@ -171,7 +171,7 @@
                 </tbody>
               </table>
               <router-link to="/tours/new">
-                <button v-if="$parent.getUserId() == user.id" class="btn btn-primary btn-sm">Add Tour Stop</button>
+                <button v-if="$parent.getUserId() == user.id" class="btn btn-primary btn-sm">Add A Show</button>
               </router-link>
             </div>
           </div>

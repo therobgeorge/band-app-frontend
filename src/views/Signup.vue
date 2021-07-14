@@ -136,6 +136,16 @@
             <!-- /registration form -->
           </div>
           <!-- /REGISTER -->
+          <div>
+            <img
+              class="img-responsive"
+              src="/my-images/kkb.png"
+              width="555"
+              height="311"
+              style="margin-top: 100px"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </section>

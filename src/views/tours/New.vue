@@ -19,6 +19,9 @@
     <section>
       <div class="container">
         <div class="row">
+          <div class="col-md-6">
+            <img class="img-responsive" src="/my-images/jettybones.png" width="555" height="311" alt="" />
+          </div>
           <div class="col-md-5">
             <!-- personal settings -->
             <form v-on:submit.prevent="createTour()" action="#" method="post" class="sky-form boxed">

@@ -46,6 +46,9 @@
             <!-- /login form -->
           </div>
           <!-- /LOGIN -->
+          <div>
+            <img class="img-responsive" src="/my-images/freethrow.png" width="555" height="311" alt="" />
+          </div>
         </div>
       </div>
     </section>
