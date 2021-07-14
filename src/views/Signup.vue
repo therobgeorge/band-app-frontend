@@ -104,7 +104,6 @@
                     <i class="icon-append fa fa-map-pin"></i>
                     <textarea
                       class="form-control"
-                      required
                       v-model="newUserParams.address"
                       rows="10"
                       placeholder="Enter full address: 1234 Street Address, City, State, Post Code"
@@ -119,7 +118,6 @@
                     <i class="icon-append fa fa-home"></i>
                     <textarea
                       class="form-control"
-                      required
                       v-model="newUserParams.accommodation_description"
                       rows="10"
                       placeholder="Housing Description: (i.e., I have one spare room with a bed, and a living room with a couch."

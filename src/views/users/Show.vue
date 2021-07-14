@@ -129,7 +129,7 @@
                               <form v-on:submit.prevent="updateTour()">
                                 <ul>
                                   <li class="text-danger" v-for="error in errors" v-bind:key="error">
-                                    {{ error }}
+                                    {{ errors }}
                                   </li>
                                 </ul>
                                 <div class="form-group">

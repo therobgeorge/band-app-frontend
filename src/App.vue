@@ -62,7 +62,7 @@
                   </router-link>
                 </li>
                 <li v-if="isLoggedIn()" class="dropdown">
-                  <router-link :key="$route.fullPath" :to="`/users/${getUserId()}`">
+                  <router-link :to="`/users/${getUserId()}`">
                     My Profile
                     <span>__________</span>
                   </router-link>
@@ -103,7 +103,7 @@
         <router-link to="/logout">Logout</router-link>
       </span>
     </div> -->
-    <router-view />
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 
