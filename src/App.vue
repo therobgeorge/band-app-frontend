@@ -69,7 +69,7 @@
                 </li>
                 <li v-if="isLoggedIn()" class="dropdown">
                   <router-link to="/logout">
-                    Logout
+                    Log Out
                     <span>______</span>
                   </router-link>
                 </li>

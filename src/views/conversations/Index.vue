@@ -79,6 +79,7 @@
                     <span>{{ conversation.band.name }}</span>
                   </router-link>
                 </a>
+                <p v-if="currentUser.id == conversation.last_message.user_id">You:</p>
                 <p>
                   {{ conversation.last_message.body }}
                 </p>
